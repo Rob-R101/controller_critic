@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  review: MyText
+  user: one
+  game: one
+  count: 1
+
+two:
+  review: MyText
+  user: two
+  game: two
+  count: 1
