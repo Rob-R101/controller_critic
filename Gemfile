@@ -29,6 +29,9 @@ gem "jbuilder"
 # Add devise for user authentication
 gem "devise"
 
+# Add faker for generating fake data
+gem 'faker'
+
 # Use Redis for caching [
 
 # Use Redis adapter to run Action Cable in production
