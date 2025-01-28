@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_27_172057) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_28_150843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "gameplatforms", force: :cascade do |t|
+  create_table "game_platforms", force: :cascade do |t|
     t.bigint "game_id", null: false
     t.bigint "platform_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_gameplatforms_on_game_id"
-    t.index ["platform_id"], name: "index_gameplatforms_on_platform_id"
+    t.index ["game_id"], name: "index_game_platforms_on_game_id"
+    t.index ["platform_id"], name: "index_game_platforms_on_platform_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -37,13 +37,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_27_172057) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mygames", force: :cascade do |t|
+  create_table "my_games", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_mygames_on_game_id"
-    t.index ["user_id"], name: "index_mygames_on_user_id"
+    t.index ["game_id"], name: "index_my_games_on_game_id"
+    t.index ["user_id"], name: "index_my_games_on_user_id"
   end
 
   create_table "platforms", force: :cascade do |t|
@@ -93,10 +93,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_27_172057) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
-  add_foreign_key "gameplatforms", "games"
-  add_foreign_key "gameplatforms", "platforms"
-  add_foreign_key "mygames", "games"
-  add_foreign_key "mygames", "users"
+  add_foreign_key "game_platforms", "games"
+  add_foreign_key "game_platforms", "platforms"
+  add_foreign_key "my_games", "games"
+  add_foreign_key "my_games", "users"
   add_foreign_key "reviews", "games"
   add_foreign_key "reviews", "users"
   add_foreign_key "userplatforms", "platforms"
