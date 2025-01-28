@@ -28,6 +28,11 @@ gem "jbuilder"
 
 # Add devise for user authentication
 gem "devise"
+gem "bootstrap", "~> 5.2"
+gem "autoprefixer-rails"
+gem "font-awesome-sass", "~> 6.1"
+gem "simple_form"
+gem "sassc-rails"
 
 # Use Redis for caching [
 
