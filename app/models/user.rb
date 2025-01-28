@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :my_games
   has_many :games, through: :my_games
+  has_many :wishlists
+  has_many :wishlist_games, through: :wishlists, source: :game
+  has_many :user_platforms
+  has_many :platforms, through: :user_platforms
 end
