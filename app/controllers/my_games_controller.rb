@@ -14,5 +14,4 @@ class MyGamesController < ApplicationController
       redirect_to game_path(@game), alert: "Unable to add to your games."
     end
   end
-
 end
