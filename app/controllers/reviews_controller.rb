@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @game = Game.find(params[:game_id])
     @reviews = @game.reviews
@@ -11,9 +12,9 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-      redirect_to game_path(@game), notice: 'Review added successfully.'
+      redirect_back (@game), notice: 'Review added successfully.'
     else
-      redirect_to game_path(@game), alert: 'Unable to add review.'
+      redirect_back (@game), alert: 'Unable to add review.'
     end
   end
 
