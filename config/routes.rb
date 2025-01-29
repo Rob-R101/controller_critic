@@ -12,5 +12,9 @@ Rails.application.routes.draw do
         patch :downvote
       end
     end
+    resources :my_games, only: [:create]
   end
+
+  resources :my_games, only: [:index, :destroy, :update]
+
 end
