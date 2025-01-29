@@ -1,5 +1,16 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
+  before_action :set_review, only: [:upvote, :downvote]
+
+  def upvote
+    @review.increment!(:count)
+    redirect_back fallback_location: game_path(@review.game), notice: 'Review upvoted.'
+  end
+
+  def downvote
+    @review.decrement!(:count)
+    redirect_back fallback_location: game_path(@review.game), notice: 'Review downvoted.'
+  end
 
   def index
     @game = Game.find(params[:game_id])
@@ -19,6 +30,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def set_review
+    @review = Review.find(params[:id])
+  end
 
   def review_params
     params.require(:review).permit(:review)
