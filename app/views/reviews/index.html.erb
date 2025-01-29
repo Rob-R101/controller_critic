@@ -1,6 +1,24 @@
 <div class="reviews-container">
   <h2>User Reviews</h2>
 
+  <% @reviews.each do |review| %>
+    <div class="review">
+      <h3>
+        <% if review.user.present? %>
+          <%= review.user.email %>
+        <% else %>
+          Anonymous
+        <% end %>
+        <% if review.created_at.present? %>
+          <span class="timestamp">[<%= review.created_at.strftime("%B %d, %Y - %H:%M") %>]</span>
+        <% else %>
+          <span class="timestamp">[Unknown Date]</span>
+        <% end %>
+      </h3>
+      <p class="review-content"><%= review.review %></p>
+    </div>
+  <% end %>
+
   <% if user_signed_in? %>
     <div class="review-input">
       <%= form_with(model: [ @game, @game.reviews.build ], local: true) do |form| %>
@@ -14,30 +32,5 @@
     </div>
   <% else %>
     <p>You must <%= link_to 'sign in', new_user_session_path %> to leave a review.</p>
-  <% end %>
-
-  <% @reviews.each do |review| %>
-    <div class="review">
-      <h3>
-        <% if review.user.present? %>
-          <%= review.user.email %>
-        <% else %>
-          Anonymous
-        <% end %>
-
-        <% if review.created_at.present? %>
-          <span class="timestamp">[<%= review.created_at.strftime("%B %d, %Y - %H:%M") %>]</span>
-        <% else %>
-          <span class="timestamp">[Unknown Date]</span>
-        <% end %>
-      </h3>
-
-      <p class="review-content"><%= review.review %></p>
-
-      <div class="review-actions">
-        <span class="vote"> 👍 </span>
-        <span class="vote"> 👎 </span>
-      </div>
-    </div>
   <% end %>
 </div>
