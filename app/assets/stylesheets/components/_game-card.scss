@@ -1,0 +1,51 @@
+.search-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 60px;
+}
+
+.game-card {
+  overflow: hidden;
+  background: $purple;
+  // box-shadow: 0 0 15px rgba(255, 255, 255, 0.29);
+  border-radius: 15px;
+}
+
+.game-card > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.game-card h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  color: $gray;
+  line-height: 140%;
+}
+
+.game-card h3 {
+  font-size: 12px;
+  margin: 0;
+  color: $gray;
+  line-height: 140%;
+}
+
+
+.game-card p {
+  color: $gray;
+}
+
+
+.game-card .game-card-details {
+  padding: 16px;
+}
+
+.game-card-details .game-card-rating {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+  color: $orange;
+}
