@@ -1,0 +1,21 @@
+.tab-container {
+  width: 100%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  background-color: red;
+}
+
+.nav {
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: green;
+}
+
+.nav-item {
+  list-style: none;
+  color: $orange;
+}
