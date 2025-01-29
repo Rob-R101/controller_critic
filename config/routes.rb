@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :users, only: [:show, :update]
-  
+
   resources :games, only: [:index, :show] do
-    resources :reviews, only: [:index] 
+    resources :reviews, only: [:index]
   end
 end
