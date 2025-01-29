@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     end
     resources :my_games, only: [:create]
     resources :wishlists, only: [:create]
-    resources :reviews, only: [:index, :create]
   end
 
   resources :my_games, only: [:index, :destroy, :update]
