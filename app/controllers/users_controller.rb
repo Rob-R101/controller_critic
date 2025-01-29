@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @wishlist = @user.wishlists
+    @mygames = @user.games
   end
 
   def update

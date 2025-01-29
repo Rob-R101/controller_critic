@@ -1,19 +1,17 @@
 <div class="user-container">
   <div class="user-details-card">
     <div class="details">
-      <div class="info-text">
-        <h1><%= "#{@user.username}" %></h1>
-        <p>Reviews:</p>
-        <p>Votes:</p>
-        <p>Most Played:</p>
+      <div class="profile-info">
+        <h1 class="username"><%= "#{@user.username}" %></h1>
+        <p class="profile-text">Reviews:</p>
+        <p class="profile-text">Votes:</p>
+        <p class="profile-text">Most Played:</p>
       </div>
 
       <div class="console-logos">
-        <ul>
-        <li><i class="fa-brands fa-playstation"></i></li>
-        <li><i class="fa-brands fa-xbox"></i></li>
-        <li><i class="fa-solid fa-laptop"></i></li>
-        </ul>
+        <i class="fa-brands console-logo fa-playstation"></i>
+        <i class="fa-brands console-logo fa-xbox"></i>
+        <i class="fa-solid console-logo fa-laptop"></i>
       </div>
     </div>
 
@@ -24,6 +22,41 @@
 </div>
 
 <div class="wish-games">
-  <h2>My Games</h2>
-  <h2>Wishlist</h2>
+  <h2 class="my-games">My Games</h2>
+  <h2 class="wishlist">Wishlist</h2>
+</div>
+
+<div class="tab-container">
+  <ul class="nav-tabs">
+    <%# Wishlist Tab %>
+    <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#wishlist" aria-controls="wishlist" aria-selected="true" href="#">Wishlist</a>
+    </li>
+
+    <%# My Games Tab %>
+    <li class="nav-item">
+      <a class="nav-link disabled" data-bs-toggle="tab" data-bs-target="#mygames" aria-controls="mygames" aria-selected="false" href="#">Wishlist</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <%# Wishlist Content %>
+    <div class="tab-pane fade show active" id="wishlist" aria-labelledby="wishlist-tab">
+      <%# <% if @wishlist.present? %>
+        <%# <ul class="list-group">
+          <% @wishlist.each do |game| %>
+            <%# <li class="list-group-item"><%= @game.title %></li>
+          <%# <% end %>
+        <%# </ul>
+      <% else %>
+        <%# <p class="text-muted">Your wishlist is empty</p>
+      <% end %>
+    </div>
+
+    <%# My Games Content %>
+    <div class="tab-pane fade show active" id="mygames" aria-labelledby="mygames-tab">
+
+    </div>
+
+  </div>
 </div>
