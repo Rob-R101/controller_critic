@@ -21,42 +21,34 @@
   </div>
 </div>
 
-<div class="wish-games">
-  <h2 class="my-games">My Games</h2>
-  <h2 class="wishlist">Wishlist</h2>
-</div>
-
 <div class="tab-container">
-  <ul class="nav-tabs">
-    <%# Wishlist Tab %>
+   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#wishlist" aria-controls="wishlist" aria-selected="true" href="#">Wishlist</a>
+      <a class="nav-link active" aria-current="page" href="#">My Games</a>
     </li>
-
-    <%# My Games Tab %>
     <li class="nav-item">
-      <a class="nav-link disabled" data-bs-toggle="tab" data-bs-target="#mygames" aria-controls="mygames" aria-selected="false" href="#">Wishlist</a>
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Wishlist</a>
     </li>
   </ul>
 
   <div class="tab-content">
-    <%# Wishlist Content %>
-    <div class="tab-pane fade show active" id="wishlist" aria-labelledby="wishlist-tab">
-      <%# <% if @wishlist.present? %>
-        <%# <ul class="list-group">
-          <% @wishlist.each do |game| %>
-            <%# <li class="list-group-item"><%= @game.title %></li>
-          <%# <% end %>
-        <%# </ul>
-      <% else %>
-        <%# <p class="text-muted">Your wishlist is empty</p>
-      <% end %>
-    </div>
-
     <%# My Games Content %>
-    <div class="tab-pane fade show active" id="mygames" aria-labelledby="mygames-tab">
+    <% @games.each do |game| %>
+      <%= link_to game_path(game) do %>
+      <div class="game-card">
+        <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
+          <div class="game-card-details">
 
-    </div>
+          <h2><%= "#{game.title}" %></h2>
+          <h3><%= "#{game.genre}" %></h3>
+          <br>
+          <p>We need to find a short description</p>
+            <div class="game-card-rating">
+            </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 
   </div>
 </div>
