@@ -1,0 +1,38 @@
+.user-container {
+  width: 100%;
+  background-color: gray;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.user-details-card {
+  background-color: orange;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+.details {
+  background-color: yellow;
+  width: 90%;
+}
+
+.info-text {
+  background-color: red;
+}
+
+.console-logos {
+  background-color: green;
+}
+h1 {
+  text-transform: capitalize;
+}
+
+.profile-image {
+  height: 200px;
+  width: 200px;
+}
+
+.wish-games {
+  background-color: purple;
+}

@@ -49,8 +49,9 @@ end
 users = 10.times.map do
   User.create!(
     email: Faker::Internet.unique.email,
-    password: 'password', # Set a common password for simplicity
-    password_confirmation: 'password'
+    password: 'password',
+    password_confirmation: 'password',
+    username: Faker::Internet.unique.username(specifier: 5..12)
   )
 end
 
