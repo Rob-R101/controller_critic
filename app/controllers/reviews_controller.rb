@@ -1,24 +1,22 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
   before_action :set_review, only: [:upvote, :downvote]
+  before_action :set_game
 
   def upvote
+    @review = @game.reviews.find(params[:id])
     @review.increment!(:count)
-    redirect_back fallback_location: game_path(@review.game), notice: 'Review upvoted.'
+    redirect_to game_path(@game, anchor: "review-#{@review.id}"), notice: "You upvoted the review!"
   end
 
   def downvote
+    @review = @game.reviews.find(params[:id])
     @review.decrement!(:count)
-    redirect_back fallback_location: game_path(@review.game), notice: 'Review downvoted.'
+    redirect_to game_path(@game, anchor: "review-#{@review.id}"), notice: "You downvoted the review!"
   end
 
-  def index
-    @game = Game.find(params[:game_id])
-    @reviews = @game.reviews.order(created_at: :desc)
-  end
 
   def create
-    @game = Game.find(params[:game_id])
     @review = @game.reviews.build(review_params)
     @review.user = current_user
 
@@ -30,6 +28,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def set_game
+    @game = Game.find(params[:game_id])
+  end
 
   def set_review
     @review = Review.find(params[:id])
