@@ -1,0 +1,23 @@
+<div class="game-info-container">
+  <div class="game-banner">
+  <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image">
+  </div>
+  <div class="game-title-description">
+    <h1><%= @game.title %></h1>
+    <p>We need to get game descriptions here
+
+      Assassin's Creed Odyssey is the twentieth game in its series. It is the earliest game in the Assassin's Creed universe chronology and the prequel to Assassin's Creed Origins.
+      Gameplay
+      Unlike most earlier installments of Assassin's Creed, which put the emphasis solely on action, Odyssey has a strong role-playing element in it. Dialogue options and the non-linear plot allow the player to reach several alternate endings. The game also has a reputation system and multiple options for romancing, including same-sex romances. The combat system is similar to that in Origins with the addition of new skills. The game also reintroduces naval battles.
+    </p>
+    <h2>Platforms: </h2>
+    <h2>Year released: <%= @game.year_published %></h2>
+    <h2>Genre: <%= @game.genre %></h2>
+    <h2>Publisher: <%= @game.publisher %></h2>
+    <%= button_to "Add to my games", game_my_games_path(@game), method: :post, class: "btn btn-outline-primary" %>
+    <button type="button" class="btn btn-outline-primary">Add to wishlist</button>
+  </div>
+
+
+
+</div>
