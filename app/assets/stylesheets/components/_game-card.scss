@@ -43,9 +43,15 @@
 }
 
 .game-card-details .game-card-rating {
+  color: $gray;
   position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
-  color: $orange;
+	transform: skew(-20deg);
+	background: $orange;
+  border-radius: 5px;
+  right: 80px;
+  top: -30px;
+  width: 60px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
 }

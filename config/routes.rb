@@ -13,8 +13,11 @@ Rails.application.routes.draw do
       end
     end
     resources :my_games, only: [:create]
+    resources :wishlists, only: [:create]
+    resources :reviews, only: [:index, :create]
   end
 
   resources :my_games, only: [:index, :destroy, :update]
+  resources :wishlists, only: [:index, :destroy, :update]
 
 end
