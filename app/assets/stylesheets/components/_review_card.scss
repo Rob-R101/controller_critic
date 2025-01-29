@@ -27,32 +27,6 @@ p {
   color: $purple
 }
 
-.game-card {
-  background: $gray;
-  border-radius: $border-radius-lg;
-  padding: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-
-  .game-title {
-    font-size: 22px;
-    color: $yellow;
-  }
-
-  .game-genre,
-  .game-developer,
-  .game-rating,
-  .game-year {
-    color: white;
-    font-size: 14px;
-  }
-
-  .btn {
-    margin-top: 10px;
-  }
-}
-
 .footer {
   margin-top: 50px;
   text-align: center;
