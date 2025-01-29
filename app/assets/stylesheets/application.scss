@@ -11,6 +11,8 @@
 @import "components/index";
 @import "pages/index";
 @import "components/game-card";
+@import "components/game-info-container";
+@import "components/game-banner";
 
 h1 {
   color: $orange;
@@ -33,4 +35,8 @@ p {
   font-size: 12px;
   font-weight: 500;
   color: white;
+}
+
+a {
+  text-decoration: none;
 }
