@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update]
 
   resources :games, only: [:index, :show] do
-    resources :reviews, only: [:index]
+    resources :reviews, only: [:index, :create]
   end
 end
