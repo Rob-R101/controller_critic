@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update]
 
   resources :games, only: [:index, :show] do
-    resources :reviews, only: [:index, :create]
+    resources :reviews, only: [:index, :create] do
+      member do
+        patch :upvote
+        patch :downvote
+      end
+    end
   end
 end
