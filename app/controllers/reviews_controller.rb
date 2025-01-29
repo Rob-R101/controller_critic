@@ -1,9 +1,9 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create]
 
   def index
     @game = Game.find(params[:game_id])
-    @reviews = @game.reviews
+    @reviews = @game.reviews.order(created_at: :desc)
   end
 
   def create
@@ -12,9 +12,9 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-      redirect_back (@game), notice: 'Review added successfully.'
+      redirect_back fallback_location: game_path(@game), notice: 'Review added successfully.'
     else
-      redirect_back (@game), alert: 'Unable to add review.'
+      redirect_back fallback_location: game_path(@game), alert: 'Unable to add review.'
     end
   end
 
