@@ -1,6 +1,6 @@
 <div class="game-info-container">
   <div class="game-banner">
-  <%# <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"> %>
+  <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image">
   </div>
   <div class="game-title-description">
     <h1><%= @game.title %></h1>
@@ -14,8 +14,8 @@
     <h2>Year released: <%= @game.year_published %></h2>
     <h2>Genre: <%= @game.genre %></h2>
     <h2>Publisher: <%= @game.publisher %></h2>
-    <button type="button" class="btn btn-primary">Add to my games</button>
-    <button type="button" class="btn btn-primary">Add to wishlist</button>
+    <%= button_to "Add to my games", game_my_games_path(@game), method: :post, class: "btn btn-outline-primary" %>
+    <button type="button" class="btn btn-outline-primary">Add to wishlist</button>
   </div>
 
 
