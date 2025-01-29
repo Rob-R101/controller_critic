@@ -1,63 +1,72 @@
 // Import the Bootstrap Variables and Fonts
 @import "config/bootstrap_variables";
 
-.container {
-  max-width: 1100px;
+.reviews-container {
+  background-color: #1C110A;
+  padding: 20px;
+  border-radius: 8px;
+  color: #FFA552;
+  max-width: 700px;
   margin: auto;
-}
-
-h1 {
-  color: $orange;
-  font-size: 32px;
+  font-family: "Albert Sans", sans-serif;
 }
 
 h2 {
-  color: $gray;
-  font-size: 26px;
+  font-size: 22px;
+  color: $orange;
+  margin-bottom: 15px;
+}
+
+.review-input {
+  border: 2px solid #918EF4;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  background: transparent;
+}
+
+.review-input input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.review {
+  padding: 15px 0;
+  border-top: 1px solid #918EF4;
 }
 
 h3 {
-  color: $purple;
+  color: #FFC65A;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-p {
-  font-family: $body-font;
+.timestamp {
+  color: #918EF4;
+  font-size: 12px;
+}
+
+.review-content {
   font-size: 14px;
-  font-weight: 500;
-  color: $purple
-}
-
-.game-card {
-  background: $gray;
-  border-radius: $border-radius-lg;
-  padding: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-
-  .game-title {
-    font-size: 22px;
-    color: $yellow;
-  }
-
-  .game-genre,
-  .game-developer,
-  .game-rating,
-  .game-year {
-    color: white;
-    font-size: 14px;
-  }
-
-  .btn {
-    margin-top: 10px;
-  }
-}
-
-.footer {
-  margin-top: 50px;
-  text-align: center;
-  padding: 15px;
-  background: $gray;
   color: white;
+  margin: 5px 0;
+}
+
+.review-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.vote {
   font-size: 14px;
+  color: #FFC65A;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
