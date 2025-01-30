@@ -18,7 +18,7 @@
 //   font-family: $body-font;
 //   font-size: 14px;
 //   font-weight: 500;
-//   color: $purple
+//   color: $purple;
 // }
 
 // .footer {
@@ -29,6 +29,7 @@
 //   color: white;
 //   font-size: 14px;
 // }
+
 .reviews-container {
   background-color: #1C110A;
   padding: 20px;
@@ -47,41 +48,62 @@ h2 {
 
 .review-input {
   border: 2px solid #918EF4;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
-  width: 100%;
-  background: transparent;
-}
-
-.review-input input {
-  width: 100%;
-  border: none;
-  background: transparent;
-  color: white;
-  font-size: 16px;
-  outline: none;
+  background-color: #1C110A;
+  color: #FFA552;
+  max-width: 700px;          /* Match the width of reviews-container */
+  margin: auto;              /* Center the input form */
 }
 
 .review-input textarea {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
   outline: none;
-  border-radius: 30px;
-  background: linear-gradient(to right, #3f51b5, #673ab7);
+  border-radius: 8px;
+  background: transparent;
   color: white;
-  text-align: center;
+  font-family: "Albert Sans", sans-serif;
+  resize: none;
 }
 
-.review-input textarea::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+.actions {
+  text-align: right;         /* Align the button to the right for better layout */
+  margin-top: 10px;
+}
+
+.actions input[type="submit"] {
+  background: linear-gradient(to right, #3f51b5, #673ab7);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 14px;
+  font-family: "Albert Sans", sans-serif;
+  cursor: pointer;
+}
+
+.actions input[type="submit"]:hover {
+  background: linear-gradient(to right, #5a66d6, #7d55e1);
+}
+
+
+.actions input[type="submit"]:hover {
+  background: linear-gradient(to right, #5a66d6, #7d55e1);
 }
 
 .review {
   padding: 15px 0;
   border-top: 1px solid #918EF4;
+}
+
+.review-content {
+  font-size: 14px;
+  color: white;
+  margin: 5px 0;
 }
 
 h3 {
@@ -93,19 +115,6 @@ h3 {
 .timestamp {
   color: #918EF4;
   font-size: 12px;
-}
-
-.footer {
-  margin-top: 50px;
-  text-align: center;
-  padding: 15px;
-  background: $gray;
-}
-
-.review-content {
-  font-size: 14px;
-  color: white;
-  margin: 5px 0;
 }
 
 /* Added styling for upvote/downvote section */
@@ -153,13 +162,6 @@ h3 {
   justify-content: center;
 }
 
-
-/* Ensuring buttons fit well with the theme */
-.vote-button {
-  padding: 5px;
-  border-radius: 5px;
-}
-
 /* Footer Section */
 .footer {
   margin-top: 50px;
@@ -167,4 +169,3 @@ h3 {
   padding: 15px;
   background: $gray;
 }
-
