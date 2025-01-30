@@ -35,23 +35,27 @@
 <div class="tab-content" id="gameTabsContent">
   <!-- My Games Tab -->
   <div class="tab-pane fade show active" id="mygames" aria-labelledby="mygames-tab">
-    <% if @mygames.present? %>
-      <% @mygames.each do |game| %>
-        <div class="game-card">
-          <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
-          <div class="game-card-details">
-            <h2><%= link_to game.title, game_path(game) %></h2>
-            <h3><%= game.genre %></h3>
-            <p>Game Description Here</p>
+    <div class="search-container">
+      <% if @mygames.present? %>
+        <% @mygames.each do |game| %>
+        <%= link_to game_path(game) do %>
+          <div class="game-card">
+            <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
+            <div class="game-card-details">
+              <h2><%= game.title %></h2>
+              <h3><%= game.genre %></h3>
+              <p>Game Description Here</p>
+            </div>
+            <div class="game-card-rating">
+              <p>Game Rating Here</p>
+            </div>
           </div>
-          <div class="game-card-rating">
-            <p>Game Rating Here</p>
-          </div>
-        </div>
+        <% end %>
+        <% end %>
+      <% else %>
+        <p>No Games Found</p>
       <% end %>
-    <% else %>
-      <p>No Games Found</p>
-    <% end %>
+    </div>
   </div>
 
   <!-- Wishlist Tab -->
@@ -71,7 +75,10 @@
         </div>
       <% end %>
     <% else %>
-      <p>No Games Found</p>
+      <div class="no-games">
+        <p>No Games Found</p>
+      </div>
+
     <% end %>
   </div>
 </div>
