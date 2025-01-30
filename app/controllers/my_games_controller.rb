@@ -13,6 +13,8 @@ class MyGamesController < ApplicationController
     else
       redirect_to game_path(@game), alert: "Unable to add to your games."
     end
+  end
+end
 
     # Test this when user page set up - should delete from user profile page
     # def destroy
@@ -24,4 +26,3 @@ class MyGamesController < ApplicationController
     #     redirect_to user_path, alert: "Failed to remove game from my games."
     #   end
     # end
-end
