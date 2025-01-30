@@ -5,7 +5,7 @@
     <div class="review" id="review-<%= review.id %>">
       <h3>
         <% if review.user.present? %>
-          <span class="review-user"><%= review.user.email %></span>
+          <span class="review-user"><%= review.user.username %></span>
         <% else %>
           <span class="review-user">Anonymous</span>
         <% end %>
