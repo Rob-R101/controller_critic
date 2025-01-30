@@ -9,6 +9,12 @@
   margin: 60px;
 }
 
+.tab-pane {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 60px;
+}
+
 .game-card {
   overflow: hidden;
   background: $purple;
