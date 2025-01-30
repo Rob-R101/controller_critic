@@ -24,10 +24,13 @@
 <div class="tab-container">
   <ul class="nav" id="gameTabs">
     <li class="nav-item" >
-      <h2><a class="nav-link active" id="mygames-tab" data-bs-toggle="tab" data-bs-target="#mygames" type="button" role="tab" aria-controls="mygames" aria-selected="true" href="#">My Games</a></h2>
+      <h2><a class="nav-link active" id="mygames-tab" data-bs-toggle="tab" data-bs-target="#mygames" type="button" role="tab" aria-controls="mygames" aria-selected="true">Game Collection</a></h2>
     </li>
     <li class="nav-item">
-      <h2><a class="nav-link" id="wishlist-tab" data-bs-toggle="tab" data-bs-target="#wishlist" type="button" role="tab" aria-controls="wishlist" aria-selected="false" href="#">Wishlist</a></h2>
+      <h2><a class="nav-link" id="wishlist-tab" data-bs-toggle="tab" data-bs-target="#wishlist" type="button" role="tab" aria-controls="wishlist" aria-selected="false">Wishlist</a></h2>
+    </li>
+    <li class="nav-item">
+      <h2><a class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a></h2>
     </li>
   </ul>
 </div>
@@ -38,24 +41,24 @@
     <div class="search-container">
       <% if @mygames.present? %>
         <% @mygames.each do |game| %>
-        <%= link_to game_path(game) do %>
-          <div class="game-card">
-            <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
-            <div class="game-card-details">
-              <h2><%= game.title %></h2>
-              <h3><%= game.genre %></h3>
-              <p>Game Description Here</p>
+          <%= link_to game_path(game) do %>
+            <div class="game-card">
+              <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
+              <div class="game-card-details">
+                <h2><%= game.title %></h2>
+                <h3><%= game.genre %></h3>
+                <p>Game Description Here</p>
+              </div>
+              <div class="game-card-rating">
+                <p>Game Rating Here</p>
+              </div>
             </div>
-            <div class="game-card-rating">
-              <p>Game Rating Here</p>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
         <% end %>
       <% else %>
-      <div class="no-games">
-        <h1>No Games Found</h1>
-      </div>
+        <div class="no-games">
+          <h1>No Games Found</h1>
+        </div>
       <% end %>
     </div>
   </div>
@@ -81,5 +84,22 @@
         <h1>No Games Found</h1>
       </div>
     <% end %>
+  </div>
+
+<!-- Reviews Tab -->
+  <div class="tab-pane fade" id="reviews" aria-labelledby="reviews-tab">
+    <div class="search-container">
+      <% if @reviews.present? %>
+        <% @reviews.each do |review| %>
+          <div class="review-card">
+            <h2><%= link_to review.game.title, game_path(review.game) %></h2>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="no-games">
+          <h1>User has left no reviews</h1>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
