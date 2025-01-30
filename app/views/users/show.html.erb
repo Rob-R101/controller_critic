@@ -22,33 +22,56 @@
 </div>
 
 <div class="tab-container">
-   <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">My Games</a>
+  <ul class="nav" id="gameTabs">
+    <li class="nav-item" >
+      <h2><a class="nav-link active" id="mygames-tab" data-bs-toggle="tab" data-bs-target="#mygames" type="button" role="tab" aria-controls="mygames" aria-selected="true" href="#">My Games</a></h2>
     </li>
     <li class="nav-item">
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Wishlist</a>
+      <h2><a class="nav-link" id="wishlist-tab" data-bs-toggle="tab" data-bs-target="#wishlist" type="button" role="tab" aria-controls="wishlist" aria-selected="false" href="#">Wishlist</a></h2>
     </li>
   </ul>
+</div>
 
-  <div class="tab-content">
-    <%# My Games Content %>
-    <% @games.each do |game| %>
-      <%= link_to game_path(game) do %>
-      <div class="game-card">
-        <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
+<div class="tab-content" id="gameTabsContent">
+  <!-- My Games Tab -->
+  <div class="tab-pane fade show active" id="mygames" aria-labelledby="mygames-tab">
+    <% if @mygames.present? %>
+      <% @mygames.each do |game| %>
+        <div class="game-card">
+          <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
           <div class="game-card-details">
-
-          <h2><%= "#{game.title}" %></h2>
-          <h3><%= "#{game.genre}" %></h3>
-          <br>
-          <p>We need to find a short description</p>
-            <div class="game-card-rating">
-            </div>
+            <h2><%= link_to game.title, game_path(game) %></h2>
+            <h3><%= game.genre %></h3>
+            <p>Game Description Here</p>
+          </div>
+          <div class="game-card-rating">
+            <p>Game Rating Here</p>
+          </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>No Games Found</p>
     <% end %>
-  <% end %>
+  </div>
 
+  <!-- Wishlist Tab -->
+  <div class="tab-pane fade" id="wishlist" aria-labelledby="wishlist-tab">
+    <% if @wishlists.present? %>
+      <% @wishlists.each do |game| %>
+        <div class="game-card">
+          <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
+          <div class="game-card-details">
+            <h2><%= link_to game.title, game_path(game) %></h2>
+            <h3><%= game.genre %></h3>
+            <p>Game Description Here</p>
+          </div>
+          <div class="game-card-rating">
+            <p>Game Rating Here</p>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No Games Found</p>
+    <% end %>
   </div>
 </div>
