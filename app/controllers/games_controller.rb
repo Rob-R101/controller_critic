@@ -1,7 +1,12 @@
 class GamesController < ApplicationController
 
   def index
-    @games = Game.all
+    if params[:query].present?
+      @games = Game.search_games(params[:query])
+      flash.now[:alert] = "No games found for '#{params[:query]}'" if @games.empty?
+    else
+      @games = Game.all
+    end
   end
 
   def show

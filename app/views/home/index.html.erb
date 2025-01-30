@@ -1,2 +1,18 @@
-<h1>Welcome to Controller Critic</h1>
-<p>Your hub for game reviews!</p>
+<div class="logo-controller">
+  <%= image_tag "logo-controller.png", alt: "main" %>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: games_path, method: :get, class: "d-flex search-form" do %>
+      <div class="search-box">
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control search-input",
+              placeholder: "Search for a game / genre / platform"
+          %>
+      </div>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary search-btn" %>
+    <% end %>
+  </div>
+</div>
