@@ -13,5 +13,15 @@ class MyGamesController < ApplicationController
     else
       redirect_to game_path(@game), alert: "Unable to add to your games."
     end
-  end
+
+    # Test this when user page set up - should delete from user profile page
+    # def destroy
+    #   my_game = current_user.my_game.find(params[:id])
+
+    #   if my_game.destroy
+    #     redirect_to user_path, notice: "Game removed from my games."
+    #   else
+    #     redirect_to user_path, alert: "Failed to remove game from my games."
+    #   end
+    # end
 end

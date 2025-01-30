@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 60px;
+  margin: 60px;
 }
 
 .tab-pane {
@@ -13,8 +14,12 @@
 .game-card {
   overflow: hidden;
   background: $purple;
-  // box-shadow: 0 0 15px rgba(255, 255, 255, 0.29);
   border-radius: 15px;
+}
+
+.game-card:hover {
+  // box-shadow: 0 0 15px rgb(255, 255, 255);
+  outline: 3px solid $orange;
 }
 
 .game-card > img {
@@ -44,17 +49,18 @@
 }
 
 
-.game-card .game-card-details {
+.game-card-details {
   padding: 16px;
+  position: relative;
 }
 
-.game-card-details .game-card-rating {
+.game-card-details .game-rating {
   color: $gray;
   position: absolute;
 	transform: skew(-20deg);
 	background: $orange;
   border-radius: 5px;
-  right: 80px;
+  right: 30px;
   top: -30px;
   width: 60px;
   height: 50px;
