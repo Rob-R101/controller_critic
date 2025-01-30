@@ -33,6 +33,7 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form"
 gem "sassc-rails"
+gem "pg_search"
 
 # Add faker for generating fake data
 gem 'faker'
