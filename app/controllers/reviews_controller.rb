@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :upvote, :downvote]
   before_action :set_review, only: [:upvote, :downvote]
   before_action :set_game
 
@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
   def downvote
     @review = @game.reviews.find(params[:id])
     @review.decrement!(:count)
-    redirect_to game_path(@game, anchor: "review-#{@review.id}"), notice: "You downvoted the review!"
+    redirect_to game_path(@game, anchor: "review-#{@review.id}"), alert: "You downvoted the review!"
   end
 
 

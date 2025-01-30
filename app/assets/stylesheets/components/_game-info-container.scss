@@ -22,16 +22,40 @@
 
 .game-title-description {
   position: relative;
+  margin: 60px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: start;
 }
+
+
+.game-title-description h1,
+.game-title-description p {
+  grid-column: 1 / 2;
+}
+
+
+.game-details {
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.game-details .btn {
+  width: 100%;
+}
+
 
 .game-title-description .game-rating {
   color: $gray;
   position: absolute;
-	transform: skew(-20deg);
-	background: $orange;
+  transform: skew(-20deg);
+  background: $orange;
   border-radius: 5px;
   right: 80px;
-  top: -30px;
+  top: -80px;
   width: 60px;
   height: 50px;
   text-align: center;
