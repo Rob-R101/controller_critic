@@ -12,21 +12,9 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Search", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to destroy_user_session_path,
-                        data: { turbo_method: :delete, confirm: "Are you sure you want to log out?" },
-                        class: "nav-link" do %>
+            <%= link_to user_path(current_user), class: "nav-link" do %>
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "User menu" %>
-              Logout
             <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Games Collection", my_games_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Wish List", wishlists_path, class: "nav-link" %>
           </li>
         <% else %>
           <li class="nav-item">
