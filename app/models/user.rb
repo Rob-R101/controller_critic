@@ -5,10 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reviews
+
   has_many :my_games
-  has_many :games, through: :my_games
+  has_many :owned_games, through: :my_games, source: :game
+
   has_many :wishlists
-  has_many :games, through: :wishlists
+  has_many :wish_games, through: :wishlists, source: :game
+
   has_many :user_platforms
   has_many :platforms, through: :user_platforms
 end

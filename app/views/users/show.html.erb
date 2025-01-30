@@ -39,14 +39,14 @@
   <!-- My Games Tab -->
   <div class="tab-pane fade show active" id="mygames" aria-labelledby="mygames-tab">
     <div class="search-container">
-      <% if @mygames.present? %>
-        <% @mygames.each do |game| %>
-          <%= link_to game_path(game) do %>
+      <% if @mygames.any? %>
+        <% @mygames.each do |my_game| %>
+          <%= link_to game_path(my_game.game) do %>
             <div class="game-card">
               <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
               <div class="game-card-details">
-                <h2><%= game.title %></h2>
-                <h3><%= game.genre %></h3>
+                <h2><%= my_game.game.title %></h2>
+                <h3><%= my_game.game.genre %></h3>
                 <p>Game Description Here</p>
               </div>
               <div class="game-card-rating">
@@ -65,13 +65,14 @@
 
   <!-- Wishlist Tab -->
   <div class="tab-pane fade" id="wishlist" aria-labelledby="wishlist-tab">
-    <% if @wishlists.present? %>
-      <% @wishlists.each do |game| %>
+    <% if @wishlists.any? %>
+      <% @wishlists.each do |wishlist| %>
+        <h2><%= link_to game_path(wishlist.game) %></h2>
         <div class="game-card">
           <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
           <div class="game-card-details">
-            <h2><%= link_to game.title, game_path(game) %></h2>
-            <h3><%= game.genre %></h3>
+            <h2><%= wishlist.game.title %></h2>
+            <h3><%= wishlist.game.genre %></h3>
             <p>Game Description Here</p>
           </div>
           <div class="game-card-rating">
@@ -81,7 +82,7 @@
       <% end %>
     <% else %>
       <div class="no-games">
-        <h1>No Games Found</h1>
+        <h3>No Games Found</h3>
       </div>
     <% end %>
   </div>

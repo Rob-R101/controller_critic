@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @wishlist = @user.wishlists
-    @mygames = @user.games
+    @wishlists = @user.wishlists
+    @mygames = @user.my_games
     @reviews = @user.reviews #add to routes
   end
 
