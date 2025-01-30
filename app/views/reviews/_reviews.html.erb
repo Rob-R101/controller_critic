@@ -19,19 +19,20 @@
       <p class="review-content"><%= review.review %></p>
 
       <div class="review-votes">
-        <%= form_with url: upvote_game_review_path(@game, review), method: :patch, local: true do |form| %>
+        <%= form_with url: upvote_game_review_path(@game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
           <%= form.submit "👍", class: "vote-button upvote" %>
         <% end %>
 
         <span class="vote-count">Total number of votes: <%= review.count %></span>
 
-        <%= form_with url: downvote_game_review_path(@game, review), method: :patch, local: true do |form| %>
+        <%= form_with url: downvote_game_review_path(@game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
           <%= form.submit "👎", class: "vote-button downvote" %>
         <% end %>
       </div>
     </div>
   <% end %>
 </div>
+
 
 
   <% if user_signed_in? %>
