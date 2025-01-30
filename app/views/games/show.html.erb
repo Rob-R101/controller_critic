@@ -5,18 +5,18 @@
   <div class="game-title-description">
     <h2 class="game-rating"><%= @game.rating %></h2>
     <h1><%= @game.title %></h1>
-    <p>We need to get game descriptions here
+    <p>Fortnite is a globally popular online multiplayer game developed by Epic Games, known for its fast-paced battle royale mode. Released in 2017, it quickly gained massive popularity due to its unique blend of survival, building mechanics, and competitive shooting gameplay. In the battle royale mode, 100 players drop onto an island and compete to be the last person or team standing, using weapons, resources, and strategic building to outlast opponents. The game features a constantly evolving world with frequent updates, new maps, and in-game events that keep the experience fresh.
 
-      Assassin's Creed Odyssey is the twentieth game in its series. It is the earliest game in the Assassin's Creed universe chronology and the prequel to Assassin's Creed Origins.
-      Gameplay
-      Unlike most earlier installments of Assassin's Creed, which put the emphasis solely on action, Odyssey has a strong role-playing element in it. Dialogue options and the non-linear plot allow the player to reach several alternate endings. The game also has a reputation system and multiple options for romancing, including same-sex romances. The combat system is similar to that in Origins with the addition of new skills. The game also reintroduces naval battles.
-    </p>
-    <h2>Platforms: </h2>
-    <h2>Year released: <%= @game.year_published %></h2>
-    <h2>Genre: <%= @game.genre %></h2>
-    <h2>Publisher: <%= @game.publisher %></h2>
-    <%= button_to "Add to my games", game_my_games_path(@game), method: :post, class: "btn btn-outline-primary" %>
-    <%= button_to "Add to my wishlist", game_wishlists_path(@game), method: :post, class: "btn btn-outline-primary" %>
+Beyond battle royale, Fortnite also offers "Creative" and "Save the World" modes. The Creative mode allows players to build and design custom maps and mini-games, while Save the World is a cooperative campaign where players fight off waves of zombie-like creatures. The game is free-to-play with a microtransaction model based on V-Bucks, used to purchase character skins, emotes, and battle passes. Fortnite's cultural impact extends beyond gaming, featuring collaborations with major brands, celebrities, and even virtual concerts, making it a significant force in entertainment.</p>
+
+    <div class="game-details">
+      <h2>Platforms: </h2>
+      <h2>Year released: <%= @game.year_published %></h2>
+      <h2>Genre: <%= @game.genre %></h2>
+      <h2>Publisher: <%= @game.publisher %></h2>
+      <%= button_to "Add to my games", game_my_games_path(@game), method: :post, class: "btn btn-outline-primary" %>
+      <%= button_to "Add to my wishlist", game_wishlists_path(@game), method: :post, class: "btn btn-outline-primary" %>
+    </div>
   </div>
 </div>
 
