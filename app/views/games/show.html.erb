@@ -10,12 +10,21 @@
 Beyond battle royale, Fortnite also offers "Creative" and "Save the World" modes. The Creative mode allows players to build and design custom maps and mini-games, while Save the World is a cooperative campaign where players fight off waves of zombie-like creatures. The game is free-to-play with a microtransaction model based on V-Bucks, used to purchase character skins, emotes, and battle passes. Fortnite's cultural impact extends beyond gaming, featuring collaborations with major brands, celebrities, and even virtual concerts, making it a significant force in entertainment.</p>
 
     <div class="game-details">
-      <h2>Platforms: </h2>
+      <h2>Platforms: <%= @game.platforms.pluck(:name).join(" | ") %></h2>
       <h2>Year released: <%= @game.year_published %></h2>
       <h2>Genre: <%= @game.genre %></h2>
       <h2>Publisher: <%= @game.publisher %></h2>
-      <%= button_to "Add to my games", game_my_games_path(@game), method: :post, class: "btn btn-outline-primary" %>
-      <%= button_to "Add to my wishlist", game_wishlists_path(@game), method: :post, class: "btn btn-outline-primary" %>
+        <% if @user_game %>
+          <%= button_to "Remove from My Games", my_game_path(@user_game), method: :delete, class: "btn btn-primary" %>
+        <% else %>
+          <%= button_to "Add to My Games", game_my_games_path(@game), method: :post, class: "btn btn-outline-primary" %>
+        <% end %>
+
+        <% if @user_wishlist %>
+          <%= button_to "Remove from Wishlist", wishlist_path(@user_wishlist), method: :delete, class: "btn btn-primary" %>
+        <% else %>
+          <%= button_to "Add to Wishlist", game_wishlists_path(@game), method: :post, class: "btn btn-outline-primary" %>
+        <% end %>
     </div>
   </div>
 </div>
