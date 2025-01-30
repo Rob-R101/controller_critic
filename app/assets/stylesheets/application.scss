@@ -42,6 +42,18 @@ a {
 }
 
 // Code to increase the prominence of flash messages
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;  /* Keep fully visible for most of the duration */
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .flash-message {
   position: fixed;
   top: 20px;
@@ -57,6 +69,8 @@ a {
   max-width: 400px;
   width: auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  animation: fadeOut 2s ease-in-out forwards;
 }
 
 .notice {
@@ -68,6 +82,7 @@ a {
   background-color: #FF5733;
   color: white;
 }
+
 
 .login-prompt {
   font-size: 14px;
