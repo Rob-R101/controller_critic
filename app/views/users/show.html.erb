@@ -43,7 +43,7 @@
         <% @mygames.each do |my_game| %>
           <%= link_to game_path(my_game.game) do %>
             <div class="game-card">
-              <img src="<%= my_game.game.product_image %>" alt="<%= my_game.game.title %> image"/>
+              <%= image_tag my_game.game.product_image %>
               <div class="game-card-details">
                 <h2><%= my_game.game.title %></h2>
                 <h3><%= my_game.game.genre %></h3>
@@ -70,7 +70,7 @@
         <% @wishlists.each do |wishlist| %>
           <%= link_to game_path(wishlist.game) do %>
             <div class="game-card">
-              <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
+               <%= image_tag wishlist.game.product_image %>
               <div class="game-card-details">
                 <h2><%= wishlist.game.title %></h2>
                 <h3><%= wishlist.game.genre %></h3>
@@ -96,20 +96,20 @@
       <% if @reviews.present? %>
         <% @reviews.each do |review| %>
           <div class="review-card">
-            <h2><%= link_to review.game.title, game_path(review.game) %></h2>
-            <h3>
-            <% if review.user.present? %>
-              <span class="review-user"><%= review.user.username %></span>
-              <% else %>
-                <span class="review-user">Anonymous</span>
+            <%= link_to game_path(review.game) do %>
+              <% if review.user.present? %>
+                <span class="review-user"><%= review.user.username %></span>
+                <% else %>
+                  <span class="review-user">Anonymous</span>
+              <% end %>
+              <% if review.created_at.present? %>
+                <span class="timestamp">[<%= review.created_at.strftime("%B %d, %Y - %H:%M") %>]</span>
+                <% else %>
+                  <span class="timestamp">[Unknown Date]</span>
+              <% end %>
+              </h3>
+              <p class="review-content"><%= review.review %></p>
             <% end %>
-            <% if review.created_at.present? %>
-              <span class="timestamp">[<%= review.created_at.strftime("%B %d, %Y - %H:%M") %>]</span>
-              <% else %>
-                <span class="timestamp">[Unknown Date]</span>
-            <% end %>
-            </h3>
-            <p class="review-content"><%= review.review %></p>
           </div>
         <% end %>
       <% else %>
