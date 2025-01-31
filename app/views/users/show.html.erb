@@ -57,7 +57,7 @@
         <% end %>
       <% else %>
         <div class="no-games">
-          <h1>No Games Found</h1>
+          <h2>No Games Found</h2>
         </div>
       <% end %>
     </div>
@@ -65,27 +65,29 @@
 
   <!-- Wishlist Tab -->
   <div class="tab-pane fade" id="wishlist" aria-labelledby="wishlist-tab">
-    <% if @wishlists.any? %>
-      <% @wishlists.each do |wishlist| %>
-
-        <div class="game-card">
-          <h2><%= link_to game_path(wishlist.game) %></h2>
-          <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
-          <div class="game-card-details">
-            <h2><%= wishlist.game.title %></h2>
-            <h3><%= wishlist.game.genre %></h3>
-            <p>Game Description Here</p>
-          </div>
-          <div class="game-card-rating">
-            <p>Game Rating Here</p>
-          </div>
+    <div class="search-container">
+      <% if @wishlists.any? %>
+        <% @wishlists.each do |wishlist| %>
+          <%= link_to game_path(wishlist.game) do %>
+            <div class="game-card">
+              <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
+              <div class="game-card-details">
+                <h2><%= wishlist.game.title %></h2>
+                <h3><%= wishlist.game.genre %></h3>
+                <p>Game Description Here</p>
+              </div>
+              <div class="game-card-rating">
+                <p>Game Rating Here</p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <div class="no-games">
+          <h2>No Games Found</h2>
         </div>
       <% end %>
-    <% else %>
-      <div class="no-games">
-        <h3>No Games Found</h3>
-      </div>
-    <% end %>
+    </div>
   </div>
 
 <!-- Reviews Tab -->
