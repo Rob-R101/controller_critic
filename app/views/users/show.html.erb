@@ -2,10 +2,10 @@
   <div class="user-details-card">
     <div class="details">
       <div class="profile-info">
-        <h1 class="username"><%= "#{@user.username}" %></h1>
-        <p class="profile-text">Reviews:</p>
+        <h1 class="username"><%= "@#{@user.username}" %></h1>
+        <%# <p class="profile-text">Reviews:</p>
         <p class="profile-text">Votes:</p>
-        <p class="profile-text">Most Played:</p>
+        <p class="profile-text">Most Played:</p> %>
       </div>
 
       <div class="console-logos">
@@ -47,7 +47,8 @@
               <div class="game-card-details">
                 <h2><%= my_game.game.title %></h2>
                 <h3><%= my_game.game.genre %></h3>
-                <p>Game Description Here</p>
+                <br>
+                <p><%= "#{game.description}" %></p>
               </div>
               <div class="game-card-rating">
                 <%# <p>Game Rating Here</p> %>
@@ -70,14 +71,15 @@
         <% @wishlists.each do |wishlist| %>
           <%= link_to game_path(wishlist.game) do %>
             <div class="game-card">
-               <%= image_tag wishlist.game.product_image %>
+              <%= image_tag wishlist.game.product_image %>
               <div class="game-card-details">
                 <h2><%= wishlist.game.title %></h2>
                 <h3><%= wishlist.game.genre %></h3>
-                <p>Game Description Here</p>
+                <br>
+                <p><%= "#{game.description}" %></p>
               </div>
               <div class="game-card-rating">
-                <p>Game Rating Here</p>
+                <%# <p>Game Rating Here</p> %>
               </div>
             </div>
           <% end %>
@@ -98,6 +100,7 @@
           <div class="review-card">
             <%= link_to game_path(review.game) do %>
               <% if review.user.present? %>
+                <h3><%= review.game.title %></h3>
                 <span class="review-user"><%= review.user.username %></span>
                 <% else %>
                   <span class="review-user">Anonymous</span>
