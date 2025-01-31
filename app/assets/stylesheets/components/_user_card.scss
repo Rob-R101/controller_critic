@@ -10,6 +10,7 @@
   width: 80%;
   display: flex;
   justify-content: center;
+  margin-right: 120px;
 }
 
 .username {
@@ -36,11 +37,18 @@
   padding-bottom: 5px;
 }
 
+.image-logos{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .console-logos {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-start;
   padding-right: 20px;
+  padding-top: 10px;
 }
 
 .console-logo {
