@@ -1,30 +1,30 @@
 <div class="game-info-container">
   <div class="game-banner">
-  <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image">
+    <img src="<%= @game.product_image %>" alt="<%= @game.title %> image">
   </div>
   <div class="game-title-description">
     <h2 class="game-rating"><%= @game.rating %></h2>
     <h1><%= @game.title %></h1>
-    <p>Fortnite is a globally popular online multiplayer game developed by Epic Games, known for its fast-paced battle royale mode. Released in 2017, it quickly gained massive popularity due to its unique blend of survival, building mechanics, and competitive shooting gameplay. In the battle royale mode, 100 players drop onto an island and compete to be the last person or team standing, using weapons, resources, and strategic building to outlast opponents. The game features a constantly evolving world with frequent updates, new maps, and in-game events that keep the experience fresh.
 
-Beyond battle royale, Fortnite also offers "Creative" and "Save the World" modes. The Creative mode allows players to build and design custom maps and mini-games, while Save the World is a cooperative campaign where players fight off waves of zombie-like creatures. The game is free-to-play with a microtransaction model based on V-Bucks, used to purchase character skins, emotes, and battle passes. Fortnite's cultural impact extends beyond gaming, featuring collaborations with major brands, celebrities, and even virtual concerts, making it a significant force in entertainment.</p>
+    <p><%= @game.description %></p>
 
     <div class="game-details">
       <h2>Platforms: <%= @game.platforms.pluck(:name).join(" | ") %></h2>
       <h2>Year released: <%= @game.year_published %></h2>
       <h2>Genre: <%= @game.genre %></h2>
       <h2>Publisher: <%= @game.publisher %></h2>
-        <% if @user_game %>
-          <%= button_to "Remove from My Games", my_game_path(@user_game), method: :delete, class: "btn btn-primary" %>
-        <% else %>
-          <%= button_to "Add to My Games", game_my_games_path(@game), method: :post, class: "btn btn-outline-primary" %>
-        <% end %>
 
-        <% if @user_wishlist %>
-          <%= button_to "Remove from Wishlist", wishlist_path(@user_wishlist), method: :delete, class: "btn btn-primary" %>
-        <% else %>
-          <%= button_to "Add to Wishlist", game_wishlists_path(@game), method: :post, class: "btn btn-outline-primary" %>
-        <% end %>
+      <% if @user_game %>
+        <%= button_to "Remove from My Games", my_game_path(@user_game), method: :delete, class: "btn btn-primary" %>
+      <% else %>
+        <%= button_to "Add to My Games", game_my_games_path(@game), method: :post, class: "btn btn-outline-primary" %>
+      <% end %>
+
+      <% if @user_wishlist %>
+        <%= button_to "Remove from Wishlist", wishlist_path(@user_wishlist), method: :delete, class: "btn btn-primary" %>
+      <% else %>
+        <%= button_to "Add to Wishlist", game_wishlists_path(@game), method: :post, class: "btn btn-outline-primary" %>
+      <% end %>
     </div>
   </div>
 </div>

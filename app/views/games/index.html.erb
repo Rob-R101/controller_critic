@@ -6,13 +6,13 @@
   <% @games.each do |game| %>
     <%= link_to game_path(game) do %>
       <div class="game-card">
-        <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
+       <img src="<%= game.product_image %>" alt="<%= game.title %> image"/>
           <div class="game-card-details">
           <h2 class="game-rating"><%= "#{game.rating}" %></h2>
           <h2><%= "#{game.title}" %></h2>
           <h3><%= "#{game.genre}" %></h3>
           <br>
-          <p>We need to find a short description</p>
+          <p><%= "#{game.description}" %></p>
         </div>
       </div>
     <% end %>
