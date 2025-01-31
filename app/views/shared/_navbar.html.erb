@@ -13,7 +13,7 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to user_path(current_user), class: "nav-link" do %>
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "User menu" %>
+              <%= cl_image_tag "vicky-hladynets-C8Ta0gwPbQg-unsplash_jaa4zz", class: "avatar", alt: "User menu" %>
             <% end %>
           </li>
         <% else %>

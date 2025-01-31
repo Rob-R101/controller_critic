@@ -38,6 +38,8 @@ gem "pg_search"
 # Add faker for generating fake data
 gem 'faker'
 
+gem 'cloudinary'
+
 # Use Redis for caching [
 
 # Use Redis adapter to run Action Cable in production
