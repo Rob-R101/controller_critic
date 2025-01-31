@@ -31,10 +31,18 @@
 
 
 .game-title-description h1,
-.game-title-description p {
+.game-title-description .left-column {
   grid-column: 1 / 2;
-}
 
+  .game-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 60px;
+    gap: 30px;
+  }
+
+}
 
 .game-details {
   grid-column: 2 / 3;
@@ -44,7 +52,14 @@
 }
 
 .game-title-description .btn {
-  width: 200px;
+  width: 100%;
+}
+
+.light-text {
+  color: $purple;
+  opacity: 50%;
+  font-weight: normal;
+  font-size: smaller;
 }
 
 
