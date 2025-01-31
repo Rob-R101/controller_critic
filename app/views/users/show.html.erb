@@ -50,7 +50,7 @@
                 <p>Game Description Here</p>
               </div>
               <div class="game-card-rating">
-                <p>Game Rating Here</p>
+                <%# <p>Game Rating Here</p> %>
               </div>
             </div>
           <% end %>
@@ -67,8 +67,9 @@
   <div class="tab-pane fade" id="wishlist" aria-labelledby="wishlist-tab">
     <% if @wishlists.any? %>
       <% @wishlists.each do |wishlist| %>
-        <h2><%= link_to game_path(wishlist.game) %></h2>
+
         <div class="game-card">
+          <h2><%= link_to game_path(wishlist.game) %></h2>
           <img src="https://assets.xboxservices.com/assets/20/38/203850f5-1bed-4912-b25f-193ee890c97f.jpg?n=Fortnite_GLP-Page-Hero-1084_876951_1920x1080.jpg" alt="A game image"/>
           <div class="game-card-details">
             <h2><%= wishlist.game.title %></h2>
@@ -94,6 +95,22 @@
         <% @reviews.each do |review| %>
           <div class="review-card">
             <h2><%= link_to review.game.title, game_path(review.game) %></h2>
+            <h3>
+            <% if review.user.present? %>
+              <span class="review-user"><%= review.user.username %></span>
+              <% else %>
+                <span class="review-user">Anonymous</span>
+            <% end %>
+            <% if review.created_at.present? %>
+              <span class="timestamp">[<%= review.created_at.strftime("%B %d, %Y - %H:%M") %>]</span>
+              <% else %>
+                <span class="timestamp">[Unknown Date]</span>
+            <% end %>
+            </h3>
+            <p class="review-content"><%= review.review %></p>
+
+
+
           </div>
         <% end %>
       <% else %>
