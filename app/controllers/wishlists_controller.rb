@@ -14,4 +14,11 @@ class WishlistsController < ApplicationController
       redirect_to game_path(@game), alert: "Unable to add to your wishlist."
     end
   end
+
+  def destroy
+    @wishlist = Wishlist.find(params[:id])
+    @wishlist.destroy
+    redirect_back fallback_location: root_path, notice: "Game removed from Wishlist."
+  end
+
 end

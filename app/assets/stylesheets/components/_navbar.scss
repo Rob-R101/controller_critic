@@ -1,6 +1,22 @@
 .navbar-lewagon {
   justify-content: space-between;
   background-image: linear-gradient(to right, $purple, $blue);
+  padding-left: 15px;
+  padding-right: 15px;
+
+  a {
+    color: $purple;
+    font-weight: 600;
+  }
+
+  a:hover {
+    color: $orange;
+  }
+
+  li {
+    align-items: baseline;
+  }
+
 }
 
 .navbar-lewagon .navbar-collapse {

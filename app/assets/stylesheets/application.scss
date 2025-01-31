@@ -10,8 +10,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/home";
 @import "components/game-card";
 @import "components/game-info-container";
+@import "components/searchbar";
 
 
 h1 {
@@ -32,7 +34,7 @@ h3 {
 
 p {
   font-family: $body-font;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
   color: white;
 }
