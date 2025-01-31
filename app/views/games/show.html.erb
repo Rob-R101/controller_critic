@@ -8,12 +8,7 @@
 
     <p><%= @game.description %></p>
 
-    <div class="game-details">
-      <h2>Platforms: <%= @game.platforms.pluck(:name).join(" | ") %></h2>
-      <h2>Year released: <%= @game.year_published %></h2>
-      <h2>Genre: <%= @game.genre %></h2>
-      <h2>Publisher: <%= @game.publisher %></h2>
-
+    <div class="game-buttons">
       <% if @user_game %>
         <%= button_to "Remove from My Games", my_game_path(@user_game), method: :delete, class: "btn btn-primary" %>
       <% else %>
@@ -25,6 +20,20 @@
       <% else %>
         <%= button_to "Add to Wishlist", game_wishlists_path(@game), method: :post, class: "btn btn-outline-primary" %>
       <% end %>
+    </div>
+
+
+    <div class="game-details">
+      <div class="console-logos">
+        <i class="fa-brands console-logo fa-playstation"></i>
+        <i class="fa-brands console-logo fa-xbox"></i>
+        <i class="fa-solid console-logo fa-laptop"></i>
+      </div>
+      <br>
+      <%# <h2>Platforms: <%= @game.platforms.pluck(:name).join(" | ") %></h2>
+      <h2>Year released: <%= @game.year_published %></h2>
+      <h2>Genre: <%= @game.genre %></h2>
+      <h2>Publisher: <%= @game.publisher %></h2>
     </div>
   </div>
 </div>
