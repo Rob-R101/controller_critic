@@ -58,14 +58,20 @@
 // }
 
 .no-games {
-  width: 600px;
-  justify-self: center;
-  height: 150px;
-  margin-top: 50px;
+  border: 2px solid #918EF4;
+  padding: 15px;
+  width: 500px;
+  border-radius: 10px;
+  margin: 60px;
+  background: transparent;
+  margin-bottom: 20px;
+  background-color: #1C110A;
+  color: #FFA552;
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: $orange;
+  justify-content: center;
+
+  h2 {
+    padding-top: 15px;
+  }
 }
