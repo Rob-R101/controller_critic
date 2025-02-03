@@ -40,10 +40,11 @@
   margin: 60px;
 }
 
-h2 {
+.user-review-title {
   font-size: 22px;
-  color: $orange;
-  margin-bottom: 15px;
+  color: $purple;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #918EF4;
 }
 
 .review-input {
@@ -97,7 +98,13 @@ h2 {
 
 .review {
   padding: 15px 0;
-  border-top: 1px solid #918EF4;
+  border-bottom: 1px solid #918EF4;
+}
+
+.review-user-page {
+  width: 800px;
+  padding: 15px 0;
+  border-bottom: 1px solid #918EF4;
 }
 
 .review-content {
