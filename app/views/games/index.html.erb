@@ -1,20 +1,75 @@
+
+<div class="search-bar-container-game">
+  <div class="search-bar">
+    <%= form_with url: games_path, method: :get, class: "d-flex search-form" do %>
+        <div class="search-box">
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control search-input",
+                placeholder: "Search for a game / genre / platform"%>
+        </div>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary search-btn" %>
+      <% end %>
+  </div>
+</div>
+
 <div class="index-title">
   <h1>Search results</h1>
 </div>
 
-<div class="search-container">
-  <% @games.each do |game| %>
-    <%= link_to game_path(game) do %>
-      <div class="game-card">
-       <img src="<%= game.product_image %>" alt="<%= game.title %> image"/>
-          <div class="game-card-details">
-          <h2 class="game-rating"><%= "#{game.rating}" %></h2>
-          <h2><%= "#{game.title}" %></h2>
-          <h3><%= "#{game.genre}" %></h3>
-          <br>
-          <p><%= "#{game.description}" %></p>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+<%# Toggle for view %>
+<div class="view-tab-container">
+  <ul class="nav" id="card-list-view">
+    <li class="nav-item" >
+      <h2><a class="nav-link active" id="card-view-tab" data-bs-toggle="tab" data-bs-target="#card-view" type="button" role="tab" aria-controls="card-view" aria-selected="true"><i class="fas fa-th view-toggle"></i>  </a></h2>
+    </li>
+    <li class="nav-item">
+      <h2><a class="nav-link" id="list-view-tab" data-bs-toggle="tab" data-bs-target="#list-view" type="button" role="tab" aria-controls="list-view" aria-selected="false"><i class="fa-solid fa-list view-toggle"></i></a></h2>
+    </li>
+  </ul>
+</div>
+
+<%# Card View Tab %>
+<div class="tab-content" id="cardViewContent">
+  <div class="tab-pane fade show active" id="card-view" aria-labelledby="card-view-tab">
+    <div class="search-container">
+      <% @games.each do |game| %>
+        <%= link_to game_path(game) do %>
+          <div class="game-card">
+          <img src="<%= game.product_image %>" alt="<%= game.title %> image"/>
+              <div class="game-card-details">
+              <h2 class="game-rating"><%= "#{game.rating}" %></h2>
+              <h2><%= "#{game.title}" %></h2>
+              <h3><%= "#{game.genre}" %></h3>
+              <br>
+              <p><%= "#{game.description}" %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# List View Tab %>
+  <div class="tab-pane fade" id="list-view" aria-labelledby="list-view-tab">
+    <div class="search-container-list">
+      <% @games.each do |game| %>
+        <%= link_to game_path(game) do %>
+          <div class="game-card-list">
+          <img src="<%= game.product_image %>" alt="<%= game.title %> image"/>
+            <div class="game-card-details-list">
+              <div class="game-title-rating">
+                <div class="game-title-genre">
+                  <h2><%= "#{game.title}" %></h2>
+                  <h3><%= "#{game.genre}" %></h3>
+                </div>
+                <h2 class="game-rating-list"><%= "#{game.rating}" %></h2>
+              </div>
+              <p><%= "#{game.description}" %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

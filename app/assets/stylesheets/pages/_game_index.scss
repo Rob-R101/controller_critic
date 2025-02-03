@@ -1,0 +1,17 @@
+.top-background-game {
+  background-image: linear-gradient(to bottom, $purple, $black);
+  width: 100%;
+  height: 150px;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  position: absolute;
+  z-index: 20;
+}
+
+.search-bar-container-game {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  width: 100%;
+  position: absolute;
+  z-index: 25;
+}
