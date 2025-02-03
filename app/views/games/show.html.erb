@@ -36,6 +36,11 @@
         <h2><span class="light-text">Genre </span> <%= @game.genre %></h2>
         <h2><span class="light-text">Publisher </span> <%= @game.publisher %></h2>
       </div>
+      <br>
+      <%# <h2>Platforms: <%= @game.platforms.pluck(:name).join(" | ") %></h2>
+      <h2><span class="light-text">Released </span> <%= @game.year_published ? @game.year_published : "2011" %> </h2>
+      <h2><span class="light-text">Genre </span> <%= @game.genre %></h2>
+      <h2><span class="light-text">Publisher </span> <%= @game.publisher %></h2>
     </div>
 </div>
 
