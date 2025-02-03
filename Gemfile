@@ -40,6 +40,9 @@ gem 'faker'
 
 gem 'cloudinary'
 
+gem 'httparty'
+
+
 # Use Redis for caching [
 
 # Use Redis adapter to run Action Cable in production
