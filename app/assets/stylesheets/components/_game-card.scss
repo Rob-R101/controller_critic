@@ -1,13 +1,27 @@
 .index-title {
   padding-top: 30px;
   margin-left: 60px;
+  margin-top: 100px;
+  position: relative;
+  border-bottom: 3px solid transparent;
 }
 
+.index-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, $orange, $gray);
+}
+
+// card view
 .search-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 60px;
   margin: 60px;
+  margin-top: 10px;
 }
 
 .tab-pane {
@@ -70,6 +84,116 @@
   top: -30px;
   width: 60px;
   height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+// view toggle
+
+.view-tab-container {
+  height: 50px;
+}
+
+#card-list-view {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+}
+
+.view-toggle {
+  font-size: 20px;
+}
+
+
+// list view
+#list-view {
+  width: 100%;
+}
+
+.search-container-list {
+  display: flex;
+  margin: 60px;
+  margin-top: 10px;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.game-card-list {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  background: $purple;
+  border-radius: 15px;
+  flex-direction: row;
+}
+
+.game-card-list:hover {
+  outline: 3px solid $orange;
+}
+
+.game-card-list > img {
+  height: 150px;
+  width: 200px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.game-title-rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.game-title-genre {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card-list h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: $gray;
+  line-height: 140%;
+}
+
+.game-card-list h3 {
+  font-size: 14px;
+  margin: 0;
+  color: $gray;
+  line-height: 140%;
+}
+
+
+.game-card-list p {
+  color: $gray;
+  font-size: 14px;
+  padding-top: 10px;
+  width: 80%;
+}
+
+
+.game-card-details-list {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: 100%;
+}
+
+.game-rating-list {
+  color: $gray;
+	transform: skew(-20deg);
+	background: $orange;
+  border-radius: 5px;
+  width: 60px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   line-height: 50px;
 }
