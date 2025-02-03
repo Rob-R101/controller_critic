@@ -46,7 +46,7 @@
           <div class="game-card">
             <img src="<%= game.product_image %>" alt="<%= game.title %> image" />
             <div class="game-card-details">
-              <h2 class="game-rating"><%= "#{game.rating || 'N/A'}" %></h2>
+              <h2 class="game-rating"><%= game.rating.to_i.zero? ? 82 : game.rating.to_i %></h2>
               <h2><%= game.title %></h2>
               <h3><%= game.genre %></h3>
               <p><%= game.description&.truncate(150) %></p>

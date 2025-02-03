@@ -18,6 +18,97 @@ Platform.destroy_all
 Game.destroy_all
 # User.destroy_all
 
+response = HTTParty.post('https://api.igdb.com/v4/games',
+      headers: {
+        'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
+        'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
+        'Content-Type' => 'application/json'
+      },
+      body: "search \"action\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
+    )
+
+game_data = JSON.parse(response.body)
+game_data.each do |game|
+# p game["genres"][0]["name"] if game["genres"]
+
+  if game["genres"]
+    new_game = Game.new(
+      title: game["name"],
+      product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
+      description: game["summary"],
+      rating: game["rating"],
+      genre: game["genres"][0]["name"],
+    )
+    new_game.save!
+  end
+end
+
+# response = HTTParty.post('https://api.igdb.com/v4/games',
+#       headers: {
+#         'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
+#         'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
+#         'Content-Type' => 'application/json'
+#       },
+#       body: "search \"platform\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
+#     )
+
+# game_data = JSON.parse(response.body)
+# game_data.each do |game|
+
+#   new_game = Game.new(
+#     title: game["name"],
+#     product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
+#     description: game["summary"],
+#     rating: game["rating"],
+#     # genre: game["genres"]["name"],
+#   )
+#   new_game.save!
+# end
+
+# response = HTTParty.post('https://api.igdb.com/v4/games',
+#       headers: {
+#         'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
+#         'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
+#         'Content-Type' => 'application/json'
+#       },
+#       body: "search \"rpg\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
+#     )
+
+# game_data = JSON.parse(response.body)
+# game_data.each do |game|
+
+#   new_game = Game.new(
+#     title: game["name"],
+#     product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
+#     description: game["summary"],
+#     rating: game["rating"],
+#     # genre: game["genres"]["name"],
+#   )
+#   new_game.save!
+# end
+
+# response = HTTParty.post('https://api.igdb.com/v4/games',
+#       headers: {
+#         'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
+#         'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
+#         'Content-Type' => 'application/json'
+#       },
+#       body: "search \"fps\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
+#     )
+
+# game_data = JSON.parse(response.body)
+# game_data.each do |game|
+
+#   new_game = Game.new(
+#     title: game["name"],
+#     product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
+#     description: game["summary"],
+#     rating: game["rating"],
+#     genre: game["genres"][0],
+#   )
+#   new_game.save!
+# end
+
 # # Create Platforms
 # platforms = %w[PC Xbox PS5 Switch].map do |platform_name|
 #   Platform.create!(name: platform_name)
@@ -268,93 +359,7 @@ Game.destroy_all
 
 # ]
 
-response = HTTParty.post('https://api.igdb.com/v4/games',
-      headers: {
-        'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
-        'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
-        'Content-Type' => 'application/json'
-      },
-      body: "search \"action\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
-    )
 
-game_data = JSON.parse(response.body)
-game_data.each do |game|
-
-  game = Game.new(
-    title: game["name"],
-    product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
-    description: game["summary"],
-    rating: game["rating"],
-    # genre: game["genres"]["name"],
-  )
-  game.save!
-end
-
-response = HTTParty.post('https://api.igdb.com/v4/games',
-      headers: {
-        'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
-        'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
-        'Content-Type' => 'application/json'
-      },
-      body: "search \"platform\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
-    )
-
-game_data = JSON.parse(response.body)
-game_data.each do |game|
-
-  game = Game.new(
-    title: game["name"],
-    product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
-    description: game["summary"],
-    rating: game["rating"],
-    # genre: game["genres"]["name"],
-  )
-  game.save!
-end
-
-response = HTTParty.post('https://api.igdb.com/v4/games',
-      headers: {
-        'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
-        'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
-        'Content-Type' => 'application/json'
-      },
-      body: "search \"rpg\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
-    )
-
-game_data = JSON.parse(response.body)
-game_data.each do |game|
-
-  game = Game.new(
-    title: game["name"],
-    product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
-    description: game["summary"],
-    rating: game["rating"],
-    # genre: game["genres"]["name"],
-  )
-  game.save!
-end
-
-response = HTTParty.post('https://api.igdb.com/v4/games',
-      headers: {
-        'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
-        'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
-        'Content-Type' => 'application/json'
-      },
-      body: "search \"fps\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
-    )
-
-game_data = JSON.parse(response.body)
-game_data.each do |game|
-
-  game = Game.new(
-    title: game["name"],
-    product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
-    description: game["summary"],
-    rating: game["rating"],
-    # genre: game["genres"]["name"],
-  )
-  game.save!
-end
 
 
 
