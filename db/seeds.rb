@@ -278,7 +278,6 @@ response = HTTParty.post('https://api.igdb.com/v4/games',
     )
 
 game_data = JSON.parse(response.body)
-p game_data.first
 game_data.each do |game|
 
   game = Game.new(
@@ -291,9 +290,71 @@ game_data.each do |game|
   game.save!
 end
 
+response = HTTParty.post('https://api.igdb.com/v4/games',
+      headers: {
+        'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
+        'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
+        'Content-Type' => 'application/json'
+      },
+      body: "search \"platform\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
+    )
 
+game_data = JSON.parse(response.body)
+game_data.each do |game|
 
+  game = Game.new(
+    title: game["name"],
+    product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
+    description: game["summary"],
+    rating: game["rating"],
+    # genre: game["genres"]["name"],
+  )
+  game.save!
+end
 
+response = HTTParty.post('https://api.igdb.com/v4/games',
+      headers: {
+        'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
+        'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
+        'Content-Type' => 'application/json'
+      },
+      body: "search \"rpg\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
+    )
+
+game_data = JSON.parse(response.body)
+game_data.each do |game|
+
+  game = Game.new(
+    title: game["name"],
+    product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
+    description: game["summary"],
+    rating: game["rating"],
+    # genre: game["genres"]["name"],
+  )
+  game.save!
+end
+
+response = HTTParty.post('https://api.igdb.com/v4/games',
+      headers: {
+        'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
+        'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
+        'Content-Type' => 'application/json'
+      },
+      body: "search \"fps\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
+    )
+
+game_data = JSON.parse(response.body)
+game_data.each do |game|
+
+  game = Game.new(
+    title: game["name"],
+    product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
+    description: game["summary"],
+    rating: game["rating"],
+    # genre: game["genres"]["name"],
+  )
+  game.save!
+end
 
 
 
