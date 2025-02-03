@@ -19,29 +19,48 @@ Game.destroy_all
 # User.destroy_all
 
 response = HTTParty.post('https://api.igdb.com/v4/games',
-      headers: {
-        'Client-ID' => 'k3ioyb8xalvwsor0mq4765aywu1z18',
-        'Authorization' => "Bearer 7dm831buyczr4cti8sn2vgt856ulq4",
-        'Content-Type' => 'application/json'
-      },
-      body: "search \"action\"; fields name, summary, rating, genres.name, cover.url; limit 100;"
-    )
+  headers: {
+    'Client-ID' => ENV['IGDB_CLIENT_ID'],
+    'Authorization' => "Bearer #{ENV['IGDB_ACCESS_TOKEN']}",
+    'Content-Type' => 'application/json'
+  },
+  body: <<~QUERY
+    search "action";
+    fields name, summary, rating, genres.name, cover.url, release_dates.date, release_dates.platform.name, involved_companies.company.name, involved_companies.publisher;
+    limit 100;
+  QUERY
+)
 
 game_data = JSON.parse(response.body)
-game_data.each do |game|
-# p game["genres"][0]["name"] if game["genres"]
 
+game_data.each do |game|
   if game["genres"]
+    # Extract and handle release dates
+    release_dates = game["release_dates"]&.map { |release| release["date"] }&.compact
+    earliest_release_date = release_dates&.min if release_dates.present?
+    year_published = Time.at(earliest_release_date).year if earliest_release_date
+
+    # Extract the publisher name from involved_companies
+    publisher_info = game["involved_companies"]&.find { |company| company["publisher"] }
+    publisher_name = publisher_info&.dig("company", "name")
+
+    # Create and save the new game object
     new_game = Game.new(
       title: game["name"],
       product_image: game.dig("cover", "url")&.gsub("thumb", "1080p"),
       description: game["summary"],
       rating: game["rating"],
       genre: game["genres"][0]["name"],
+      year_published: year_published,
+      publisher: publisher_name
     )
     new_game.save!
   end
 end
+
+
+
+
 
 # response = HTTParty.post('https://api.igdb.com/v4/games',
 #       headers: {
