@@ -290,6 +290,19 @@ game_data.each do |game|
   )
   game.save!
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
 # # Create games using the hardcoded data
 # games = real_games.map do |game_data|
 #   Game.create!(game_data)
