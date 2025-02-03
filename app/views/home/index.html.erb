@@ -1,20 +1,68 @@
-<div class="logo-controller">
-  <%= image_tag "logo-controller.png", alt: "main" %>
+<div class="dropshadow-top">
+  <div class="top-background"></div>
 </div>
 
-<div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
-    <h1 class="d-flex justify-content-center">Find your next favourite game</h1>
+<div class="title-text">
+  <h1>Find your next adventure</h1>
+</div>
 
+<div class="search-bar-container">
+  <div class="search-bar">
     <%= form_with url: games_path, method: :get, class: "d-flex search-form" do %>
-      <div class="search-box">
-        <%= text_field_tag :query,
-              params[:query],
-              class: "form-control search-input",
-              placeholder: "Search for a game / genre / platform"
-        %>
-      </div>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary search-btn" %>
-    <% end %>
+        <div class="search-box">
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control search-input",
+                placeholder: "Search for a game / genre / platform"%>
+        </div>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary search-btn" %>
+      <% end %>
   </div>
 </div>
+
+<div class="instructions">
+  <h2>Search. Collect. Review.</h2>
+</div>
+
+<div class="bottom-background"></div>
+
+<div class=call-action-container>
+  <div class="call-action">
+    <div class="action-logo">
+      <i class="action-logo fa-solid fa-magnifying-glass"></i>
+    </div>
+    <div class="action-text">
+      <p>Search for your next favourite game</p>
+    </div>
+  </div>
+
+  <div class="call-action">
+    <div class="action-logo">
+      <i class="fa-solid fa-gamepad"></i>
+    </div>
+    <div class="action-text">
+      <p>Build your collection of owned games</p>
+    </div>
+  </div>
+
+  <div class="call-action">
+    <div class="action-logo">
+      <i class="fa-regular fa-comment"></i>
+    </div>
+    <div class="action-text">
+      <p>Review and share your thoughts with the community</p>
+    </div>
+  </div>
+
+  <div class="call-action">
+    <div class="action-logo">
+      <i class="fa-solid fa-star"></i>
+    </div>
+    <div class="action-text">
+      <p>Wishlist the games you can't wait to play</p>
+    </div>
+  </div>
+</div>
+
+    <%# <h1 class="d-flex justify-content-center">Search to find your favorite games...</h1> %>
+    <%# search bar %>
