@@ -27,7 +27,7 @@ class GamesController < ApplicationController
     end
 
     # Fetch and order reviews by most recent
-    @reviews = @game.reviews.order(created_at: :desc)
+    @reviews = @game.reviews.order(count: :desc)
   end
 end
 

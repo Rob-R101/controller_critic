@@ -37,6 +37,8 @@ gem "pg_search"
 
 gem "neighbor"
 
+gem 'redcarpet'
+
 # Add faker for generating fake data
 gem 'faker'
 
