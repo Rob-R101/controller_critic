@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   resources :my_games, only: [:index, :destroy, :update]
   resources :wishlists, only: [:index, :destroy, :update]
 
+  resources :questions, only: [:index, :create]
+
+
 end
