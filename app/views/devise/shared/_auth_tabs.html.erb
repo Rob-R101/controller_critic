@@ -1,6 +1,6 @@
 <div class="auth-container">
   <div class="login-signup">
-    <!-- Tabs Navigation -->
+    <%# Tab Nav %>
     <ul class="nav" id="signinTabs" role="tablist">
       <li class="nav-item">
         <h2>
@@ -14,14 +14,14 @@
       </li>
     </ul>
 
-    <!-- Tabs Content -->
+    <%# Tab Content %>
     <div class="tab-content" id="loginTabContent">
-      <!-- Login Tab -->
+      <%# Login Tab %>
       <div id="login-content" class="tab-pane fade show active" role="tabpanel" aria-labelledby="login-tab">
         <%= render 'devise/sessions/form' %>
       </div>
 
-      <!-- Signup Tab -->
+      <%# Sign-up Tab %>
       <div id="signup-content" class="tab-pane fade" role="tabpanel" aria-labelledby="signup-tab">
         <%= render 'devise/registrations/form' %>
       </div>
