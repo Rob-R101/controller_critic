@@ -26,6 +26,8 @@ response = HTTParty.post('https://api.igdb.com/v4/games',
   },
   body: <<~QUERY
     fields name, summary, platforms.name, aggregated_rating, rating, genres.name, cover.url, release_dates.date, involved_companies.company.name, involved_companies.publisher;
+    where platforms.name = ("PlayStation 5", "PlayStation 4", "PlayStation 3", "PlayStation 2", "Xbox Series X|S", "Xbox One", "Xbox 360", "Nintendo Switch", "Switch", "PC (Microsoft Windows)", "Mac")
+      & aggregated_rating != null;
     sort aggregated_rating desc;
     limit 500;
   QUERY
@@ -33,6 +35,7 @@ response = HTTParty.post('https://api.igdb.com/v4/games',
 
 game_data = JSON.parse(response.body)
 puts "Fetched #{game_data.size} games from API"
+
 
 # Helper method to find or create platforms
 def find_or_create_platform(platform_name)
