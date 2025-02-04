@@ -29,7 +29,7 @@ response = HTTParty.post('https://api.igdb.com/v4/games',
     where platforms.name = ("PlayStation 5", "PlayStation 4", "PlayStation 3", "PlayStation 2", "Xbox Series X|S", "Xbox One", "Xbox 360", "Nintendo Switch", "Switch", "PC (Microsoft Windows)", "Mac")
       & aggregated_rating != null;
     sort aggregated_rating desc;
-    limit 500;
+    limit 250;
   QUERY
 )
 
