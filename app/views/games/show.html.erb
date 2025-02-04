@@ -2,6 +2,7 @@
   <div class="game-banner">
     <img src="<%= @game.product_image %>" alt="<%= @game.title %> image">
   </div>
+
   <div class="game-title-description">
     <h2 class="game-rating"><%= @game.aggregated_rating ? (@game.aggregated_rating.to_f / 10).round(1) : "N/A" %></h2>
     <h1><%= @game.title %></h1>
@@ -60,13 +61,11 @@
     <% end %>
   <% end %>
 </div>
-
       <br>
       <h2><span class="light-text">Released </span> <%= @game.year_published || "N/A" %></h2>
       <h2><span class="light-text">Genre </span> <%= @game.genre || "Unknown Genre" %></h2>
       <h2><span class="light-text">Publisher </span> <%= @game.publisher || "N/A" %></h2>
     </div>
-  </div>
 </div>
 
 <%= render "reviews/reviews", game: @game, reviews: @game.reviews %>

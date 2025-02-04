@@ -15,6 +15,14 @@
   display: block;
 }
 
+.game-banner img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+}
+
 .game-info-container h2 {
   color: $purple;
   font-size: 20px;
