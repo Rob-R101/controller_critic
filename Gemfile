@@ -42,6 +42,11 @@ gem 'cloudinary'
 
 gem 'httparty'
 
+gem "ruby-openai"
+
+gem "solid_cable"
+# # gem "actioncable-enhanced-postgresql-adapter"
+gem "solid_queue"
 
 # Use Redis for caching [
 
