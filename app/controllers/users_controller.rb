@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @wishlists = @user.wishlists
     @mygames = @user.my_games
-    @reviews = @user.reviews #add to routes
+    @reviews = @user.reviews
   end
 
   def update
