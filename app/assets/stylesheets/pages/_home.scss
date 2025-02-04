@@ -44,42 +44,6 @@
   align-items: center;
 }
 
-// .action-logo {
-//   padding-left: 3px;
-// }
-
-.fa-magnifying-glass{
-  color: $purple;
-  opacity: .4;
-  font-size: 50px;
-  padding-bottom: 10px;
-  padding-top: 0px;
-}
-
-.fa-gamepad  {
-  color: $purple;
-  opacity: .4;
-  font-size: 50px;
-}
-
-.fa-comment {
-  color: $purple;
-  opacity: .4;
-  font-size: 50px;
-}
-
-.fa-star {
-  color: $purple;
-  opacity: .4;
-  font-size: 50px;
-}
-
-.action-text {
-  display: flex;
-  // padding-left: 30px;
-}
-
-
 .top-background {
   background-color: $black;
   width: 100%;
@@ -98,16 +62,16 @@
 }
 
 body {
-  background-color: #000 !important; /* Replace with your intended background color */
-  color: #f0f0f0 !important;        /* Adjust text color */
+  background-color: #000 !important;
+  color: #f0f0f0 !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
-/* Restore background sections */
+
 .homepage-container {
   .top-background {
-    background-color: #1c1c3c;  /* Replace with your top-background color */
+    background-color: #1c1c3c;
     width: 100%;
     height: 300px;
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
@@ -116,7 +80,7 @@ body {
   }
 
   .bottom-background {
-    background-color: #161645; /* Replace with your bottom-background color */
+    background-color: #161645;
     position: fixed;
     z-index: 1;
     width: 100%;
