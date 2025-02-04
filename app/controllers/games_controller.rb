@@ -3,15 +3,21 @@ class GamesController < ApplicationController
 
   def index
     if params[:query].present?
-      @games = Game.search_games(params[:query])
+      # Use the search_games scope and order alphabetically by title
+      @games = Game.search_games(params[:query]).reorder(:title)
+
+      # Flash message if no games are found
       flash.now[:alert] = "No games found for '#{params[:query]}'" if @games.empty?
     else
-      @games = Game.all
+      # Order all games alphabetically if no query is provided
+      @games = Game.all.order(:title)
     end
   end
 
   def show
     @game = Game.find(params[:id])
+
+    # Check user authentication and retrieve related data
     if user_signed_in?
       @user_game = current_user.my_games.find_by(game: @game)
       @user_wishlist = current_user.wishlists.find_by(game: @game)
@@ -19,8 +25,11 @@ class GamesController < ApplicationController
       @user_game = nil
       @user_wishlist = nil
     end
+
+    # Fetch and order reviews by most recent
     @reviews = @game.reviews.order(created_at: :desc)
   end
+end
 
   private
 
@@ -51,4 +60,3 @@ class GamesController < ApplicationController
   #     []
   #   end
   # end
-end
