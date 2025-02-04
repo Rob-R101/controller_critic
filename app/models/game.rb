@@ -10,10 +10,15 @@ class Game < ApplicationRecord
   has_many :platforms, through: :game_platforms
 
   include PgSearch::Model
+
+  # Update the pg_search_scope to include relevant fields for searching
   pg_search_scope :search_games,
-  against: [ :title, :developer, :genre, :year_published, :publisher ],
-  using: {
-    tsearch: { prefix: true }
-  }
+    against: [ :title, :developer, :genre, :year_published, :publisher ],
+    associated_against: {
+      platforms: :name  # Allow searches by platform names if needed
+    },
+    using: {
+      tsearch: { prefix: true }  # Allows partial matches (e.g., "Fan" for "Fantasy")
+    }
 
 end
