@@ -35,7 +35,7 @@ gem "simple_form"
 gem "sassc-rails"
 gem "pg_search"
 
-gem "neighbour"
+gem "neighbor"
 
 # Add faker for generating fake data
 gem 'faker'

@@ -9,6 +9,9 @@ class Game < ApplicationRecord
   has_many :game_platforms
   has_many :platforms, through: :game_platforms
 
+  has_neighbors :embedding
+  after_create :set_embedding
+
   include PgSearch::Model
 
   # Update the pg_search_scope to include relevant fields for searching
@@ -21,4 +24,17 @@ class Game < ApplicationRecord
       tsearch: { prefix: true }  # Allows partial matches (e.g., "Fan" for "Fantasy")
     }
 
+    private
+
+    def set_embedding
+      client = OpenAI::Client.new
+      response = client.embeddings(
+        parameters: {
+          model: 'text-embedding-3-small',
+          input: "Game: #{title}. Description: #{description}"
+        }
+      )
+      embedding = response['data'][0]['embedding']
+      update(embedding: embedding)
+    end
 end
