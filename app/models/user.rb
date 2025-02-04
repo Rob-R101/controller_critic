@@ -14,4 +14,6 @@ class User < ApplicationRecord
 
   has_many :user_platforms
   has_many :platforms, through: :user_platforms
+
+  has_many :questions
 end
