@@ -1,4 +1,18 @@
 <div class="user-container">
+  <% if flash[:alert].present? || flash[:notice].present? %>
+  <div class="flash-messages">
+    <% if flash[:alert].present? %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <% if flash[:notice].present? %>
+      <div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
   <div class="user-details-card">
     <div class="details">
       <div class="profile-info">

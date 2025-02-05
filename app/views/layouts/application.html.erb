@@ -14,16 +14,10 @@
   <body>
   <%= render "shared/navbar" %>
 
-  <% if flash[:notice] %>
-    <div class="flash-message notice"><%= flash[:notice] %></div>
-  <% end %>
-
-  <% if flash[:alert] %>
-    <div class="flash-message flash-alert"><%= flash[:alert] %></div>
+  <!-- Render all flash messages dynamically -->
+  <% flash.each do |key, message| %>
+    <div class="flash-message <%= key %>"><%= message %></div>
   <% end %>
 
   <%= yield %>
 </body>
-
-
-</html>
