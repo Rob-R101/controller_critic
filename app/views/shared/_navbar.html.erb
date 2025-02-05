@@ -24,7 +24,7 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <%= link_to user_path(current_user), class: "nav-link" do %>
-              <%= cl_image_tag "cartoon_gamer_hiva9u", class: "avatar", alt: "User menu" %>
+              <%= image_tag "profile-pic.png", class: "avatar", alt: "User menu" %>
             <% end %>
             <ul class="dropdown-menu dropdown-menu-end">
               <li>

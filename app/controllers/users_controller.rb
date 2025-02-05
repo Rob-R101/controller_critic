@@ -3,8 +3,16 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @wishlists = @user.wishlists
-    @mygames = @user.my_games
+    @mygames = @user.my_games.includes(:game)
     @reviews = @user.reviews
+
+    # Correct way to get the most popular genre
+    @top_genre = @mygames.joins(:game)
+                         .group("games.genre")
+                         .order(Arel.sql("COUNT(games.id) DESC"))
+                         .count
+                         .keys
+                         .first
   end
 
   def update
