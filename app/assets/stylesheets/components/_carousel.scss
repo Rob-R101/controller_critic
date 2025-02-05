@@ -1,0 +1,40 @@
+.carousel {
+  position: relative;
+  z-index: 25;
+  margin-top: 350px;
+}
+
+.carousel-item {
+  transition: transform 1s ease-in-out;
+  .card {
+    margin: 0 auto;
+
+  }
+}
+
+.card {
+  width: 500px;
+  height: 350px;
+  border-style: solid 2px;
+  border-color: $orange;
+  background-color: $black;
+}
+
+.card img {
+  height: 200px;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: $orange;
+}
+
+.card-text {
+  font-size: 14px;
+  color: $purple;
+}
