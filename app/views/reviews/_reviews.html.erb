@@ -26,7 +26,7 @@
             <% end %>
           <% end %>
 
-          <span class="vote-count">Upvotes: <%= review.count %></span>
+          <span class="vote-count"> <%= review.count %></span>
 
           <%= form_with url: downvote_game_review_path(@game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
             <%= form.button type: 'submit', class: "vote-button downvote" do %>

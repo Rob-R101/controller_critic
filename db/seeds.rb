@@ -16,6 +16,8 @@ Wishlist.destroy_all
 GamePlatform.destroy_all
 Platform.destroy_all
 Game.destroy_all
+Question.destroy_all
+User.destroy_all
 
 # Fetch top games by aggregated rating from IGDB API
 response = HTTParty.post('https://api.igdb.com/v4/games',
@@ -35,7 +37,6 @@ response = HTTParty.post('https://api.igdb.com/v4/games',
 
 game_data = JSON.parse(response.body)
 puts "Fetched #{game_data.size} games from API"
-
 
 # Helper method to find or create platforms
 def find_or_create_platform(platform_name)
@@ -67,27 +68,20 @@ game_data.each do |game|
     publisher: publisher_name
   )
 
- # Process platforms if available
-if game["platforms"]
-  puts "Found platforms for #{game['name']}:"
-  game["platforms"].each do |platform_data|
-    platform_name = platform_data["name"]
-    puts "- Processing platform: #{platform_name}"
+  # Process platforms if available
+  if game["platforms"]
+    game["platforms"].each do |platform_data|
+      platform_name = platform_data["name"]
 
-    # Find or create the platform
-    platform = find_or_create_platform(platform_name)
+      # Find or create the platform
+      platform = find_or_create_platform(platform_name)
 
-    # Create the game-platform association
-    association = GamePlatform.create!(game: new_game, platform: platform)
-
-    puts "-> Created association: Game '#{new_game.title}' <-> Platform '#{platform.name}'"
+      # Create the game-platform association
+      GamePlatform.create!(game: new_game, platform: platform)
+    end
+  else
+    puts "No platforms found for #{game['name']}."
   end
-else
-  puts "No platforms found for #{game['name']}."
-end
-
-
-  puts "Saved game: #{new_game.title}"
 end
 
 # Fetch all games from the database for later use
@@ -117,11 +111,24 @@ review_comments = [
   "Very immersive experience.",
   "Too short but enjoyable.",
   "Had some bugs but overall good.",
-  "Great multiplayer experience!"
+  "Great multiplayer experience!",
+  "Highly recommended!",
+  "Avoid at all costs.",
+  "Play this now!"
 ]
 
-# Create Reviews with predefined comments
-30.times do
+# Ensure each game has at least one review
+games.each do |game|
+  Review.create!(
+    user: users.sample,
+    game: game,
+    review: review_comments.sample
+  )
+  puts "Created review for game: #{game.title}"
+end
+
+# Create additional random reviews
+(random_reviews = 750 - games.count).times do
   Review.create!(
     user: users.sample,
     game: games.sample,
