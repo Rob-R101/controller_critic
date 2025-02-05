@@ -31,10 +31,10 @@
 // }
 
 .reviews-container {
-  background-color: #1C110A;
+  background-color: $black;
   padding: 20px;
   border-radius: 8px;
-  color: #FFA552;
+  color: $orange;
   margin: auto;
   font-family: "Albert Sans", sans-serif;
   margin: 60px;
@@ -54,7 +54,7 @@
   margin: 60px;
   background: transparent;
   margin-bottom: 20px;
-  background-color: #1C110A;
+  background-color: $black;
   color: #FFA552;
 }
 
