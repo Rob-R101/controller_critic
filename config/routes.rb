@@ -20,6 +20,4 @@ Rails.application.routes.draw do
   resources :wishlists, only: [:index, :destroy, :update]
 
   resources :questions, only: [:index, :create]
-
-
 end
