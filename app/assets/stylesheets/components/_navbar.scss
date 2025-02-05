@@ -132,10 +132,24 @@
   cursor: pointer;
 }
 
-/* Hover on the entire search box triggers the animation */
 .search-box-nav:hover .search-input-nav,
 .search-btn-nav:hover + .search-input-nav {
-  width: 500px; /* Adjust to desired expanded width */
+  width: 500px;
   opacity: 1;
   visibility: visible;
+}
+
+.btn-warning {
+  transform: skew(-20deg);
+  border-radius: 5px;
+  margin-right: 4px;
+  cursor: pointer;
+  background-color: none;
+  border-color: $purple;
+  color: $purple;
+}
+
+.btn-warning:hover {
+  color: $orange;
+  border-color: $orange;
 }
