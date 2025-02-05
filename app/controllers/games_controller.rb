@@ -27,9 +27,10 @@ class GamesController < ApplicationController
       @user_wishlist = nil
     end
 
-    # Fetch and order reviews by most recent
-    @reviews = @game.reviews.order(count: :desc)
+    # Fetch reviews and handle null vote counts by treating them as 0
+    @reviews = @game.reviews.to_a.sort_by { |review| -(review.count || 0) }
   end
+
 
   private
 

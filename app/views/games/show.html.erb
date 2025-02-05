@@ -26,35 +26,27 @@
 
     <div class="game-details">
       <div class="console-logos">
-        <% # Initialize variables to prevent duplicate icons %>
-        <% displayed_playstation_icon = false %>
-        <% displayed_xbox_icon = false %>
-        <% displayed_pc_icon = false %>
-        <% displayed_meta_icon = false %>
+        <% displayed_playstation_icon = displayed_xbox_icon = displayed_pc_icon = displayed_meta_icon = false %>
 
         <% @game.platforms.each do |platform| %>
           <% platform_name = platform.name.downcase %>
 
-          <%# Dynamically select icons based on platform name %>
           <% case platform_name %>
             <% when "playstation 2", "playstation 3", "playstation 4", "playstation 5" %>
               <% unless displayed_playstation_icon %>
                 <i class="fa-brands fa-playstation console-logo" title="PlayStation"></i>
                 <% displayed_playstation_icon = true %>
               <% end %>
-
             <% when "xbox", "xbox one", "xbox series x|s", "xbox 360" %>
               <% unless displayed_xbox_icon %>
                 <i class="fa-brands fa-xbox console-logo" title="Xbox"></i>
                 <% displayed_xbox_icon = true %>
               <% end %>
-
             <% when "windows", "pc", "pc (microsoft windows)", "mac" %>
               <% unless displayed_pc_icon %>
                 <i class="fa-solid fa-laptop console-logo" title="PC/Mac"></i>
                 <% displayed_pc_icon = true %>
               <% end %>
-
             <% when "meta quest 2", "meta quest 3" %>
               <% unless displayed_meta_icon %>
                 <i class="fa-brands fa-meta console-logo" title="Meta Quest"></i>
@@ -64,7 +56,6 @@
         <% end %>
       </div>
 
-      <br>
       <h2><span class="light-text">Released </span> <%= @game.year_published || "N/A" %></h2>
       <h2><span class="light-text">Genre </span> <%= @game.genre || "Unknown Genre" %></h2>
       <h2><span class="light-text">Publisher </span> <%= @game.publisher || "N/A" %></h2>
@@ -72,4 +63,5 @@
   </div>
 </div>
 
-<%= render "reviews/reviews", game: @game, reviews: @game.reviews %>
+<!-- Render the reviews partial -->
+<%= render "reviews/reviews", game: @game, reviews: @reviews %>

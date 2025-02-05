@@ -1,6 +1,6 @@
 <div class="reviews-container">
   <h2 class="user-review-title">User Reviews</h2>
-  <% @reviews.each do |review| %>
+  <% reviews.each do |review| %>
     <div class="review" id="review-<%= review.id %>">
       <div class="review-header">
         <% if review.user.present? %>
@@ -30,15 +30,15 @@
 
       <div class="review-votes">
         <% if user_signed_in? %>
-          <%= form_with url: upvote_game_review_path(@game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
+          <%= form_with url: upvote_game_review_path(game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
             <%= form.button type: 'submit', class: "vote-button upvote" do %>
               <i class="fa-solid fa-thumbs-up"></i>
             <% end %>
           <% end %>
 
-          <span class="vote-count"><%= review.count %></span>
+          <span class="vote-count"> <%= review.count || 0 %></span>
 
-          <%= form_with url: downvote_game_review_path(@game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
+          <%= form_with url: downvote_game_review_path(game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
             <%= form.button type: 'submit', class: "vote-button downvote" do %>
               <i class="fa-solid fa-thumbs-down"></i>
             <% end %>
@@ -50,3 +50,26 @@
     </div>
   <% end %>
 </div>
+
+<% if user_signed_in? %>
+  <div class="review-input">
+    <!-- Display error messages if any -->
+    <% if flash[:alert].present? %>
+      <div class="error-messages">
+        <p><%= flash[:alert] %></p>
+      </div>
+    <% end %>
+
+    <%= form_with(model: [@game, @game.reviews.build], local: true) do |form| %>
+      <div class="field">
+        <%= form.text_area :review, placeholder: "Write your review here..." %>
+      </div>
+      <div class="actions">
+        <%= form.submit "Add Review" %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>You must <%= link_to 'sign in', new_user_session_path %> to leave a review.</p>
+<% end %>
+
