@@ -13,6 +13,7 @@
 
 
     <div class="d-flex ms-auto">
+      <% unless request.path == root_path %>
       <div class="search-bar-nav-container">
         <div class="search-bar-nav">
           <%= form_with url: games_path, method: :get, class: "d-flex search-form" do %>
@@ -27,7 +28,7 @@
             <% end %>
         </div>
       </div>
-
+      <% end %>
 
       <%= link_to "Ask the critic", questions_path, class: "btn btn-warning me-3" %>
     </div>
