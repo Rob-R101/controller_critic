@@ -11,7 +11,24 @@
       </div>
     <% end %>
 
+
     <div class="d-flex ms-auto">
+      <div class="search-bar-nav-container">
+        <div class="search-bar-nav">
+          <%= form_with url: games_path, method: :get, class: "d-flex search-form" do %>
+              <div class="search-box-nav">
+                <%= text_field_tag :query,
+                      params[:query],
+                      class: "form-control search-input-nav",
+                      placeholder: "Search for a game / genre / platform"%>
+                <%= submit_tag "Search", name: "", class: "btn btn-primary search-btn-nav" %>
+              </div>
+
+            <% end %>
+        </div>
+      </div>
+
+
       <%= link_to "Ask the critic", questions_path, class: "btn btn-warning me-3" %>
     </div>
 
