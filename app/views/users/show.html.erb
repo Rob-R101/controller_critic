@@ -5,12 +5,12 @@
         <h1 class="username"><%= "@#{@user.username}" %></h1>
         <br>
       <h2><span class="light-text">Games in collection  </span> <%= @mygames.count %></h2>
-      <h2><span class="light-text">Games in wishlist  </span> <%= @wishlists.count %></h2>
-      <h2><span class="light-text">Number of reviews  </span> <%= @reviews.count || "No reviews yet" %></h2>
+      <h2><span class="light-text">Wishlist  </span> <%= @wishlists.count %></h2>
+      <h2><span class="light-text">Total reviews  </span> <%= @reviews.count || "No reviews yet" %></h2>
       <h2><span class="light-text">Top genre  </span> <%= @top_genre || "No genres found" %></h2>
       </div>
       <div class="console-logos">
-        <h2><span class="light-text">Consoles owned </span><h2>
+        <h2><span class="light-text">Consoles </span><h2>
         <i class="fa-brands console-logo fa-playstation"></i>
         <i class="fa-brands console-logo fa-xbox"></i>
         <i class="fa-solid console-logo fa-laptop"></i>

@@ -2,55 +2,126 @@
   <div class="carousel-inner">
     <%# Card 1 %>
     <div class="carousel-item active">
-      <div class="card">
-        <%= image_tag "controller.png" %>
-        <div class="card-body">
-          <h5 class="card-title">Search for your next favourite game</h5>
-          <p class="card-text">Find new games based on your interests and preferences.</p>
+      <div class="card text-center p-3">
+        <!-- Centering the icon above the text -->
+        <div class="d-flex flex-column align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+
+          <!-- Card content (below the icon) -->
+          <div class="card-body">
+            <br>
+            <h5 class="card-title">Search for games</h5>
+            <p class="card-text">Discover games based on your interests and preferences.</p>
+          </div>
         </div>
       </div>
     </div>
+
+
     <%# Card 2 %>
     <div class="carousel-item">
-      <div class="card">
-        <%= image_tag "controller.png" %>
-        <div class="card-body">
-          <h5 class="card-title">Build your collections of owned games</h5>
-          <p class="card-text">Keep track of all the games you own and enjoy playing.</p>
+      <div class="card text-center p-3">
+        <!-- Centering the icon above the text -->
+        <div class="d-flex flex-column align-items-center">
+          <svg id="fi_9232124" xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 32 32" fill="orange">
+            <path d="m23.331 10h-14.662c-.446.935-.689 1.962-.687 3.029l.005 4.971h4.014c0-1.657 1.343-3 3-3h2c1.657 0 3 1.343 3 3h4.014l.005-4.971c.002-1.067-.241-2.094-.687-3.029z"></path>
+            <path d="m7.998 30h16.004l.01-10h-4.012c0 1.657-1.343 3-3 3h-2c-1.657 0-3-1.343-3-3h-4.012z"></path>
+            <path d="m26.019 13.032-.005 4.968h3.986v-2c0-2.77-1.88-5.095-4.431-5.786.293.898.452 1.845.45 2.817z"></path>
+            <path d="m5.986 18-.005-4.969c-.002-.972.157-1.919.45-2.817-2.552.69-4.431 3.016-4.431 5.786v2z"></path>
+            <path d="m26.012 20-.01 10h.998c1.657 0 3-1.343 3-3v-7z"></path>
+            <path d="m5.988 20h-3.988v7c0 1.657 1.343 3 3 3h.998z"></path>
+            <rect height="4" rx="1" width="4" x="14" y="17"></rect>
+            <path d="m16 6c.553 0 1-.448 1-1v-3c0-.552-.447-1-1-1s-1 .448-1 1v3c0 .552.447 1 1 1z"></path>
+            <path d="m8.871 7.563c.194.278.505.426.82.426.198 0 .398-.059.572-.181.453-.317.562-.94.246-1.393l-1.721-2.458c-.316-.453-.942-.562-1.393-.246-.453.317-.562.94-.246 1.393l1.721 2.458z"></path>
+            <path d="m22.309 7.989c.315 0 .626-.148.82-.426l1.721-2.458c.316-.453.207-1.076-.246-1.393-.45-.316-1.076-.207-1.393.246l-1.721 2.458c-.316.453-.207 1.076.246 1.393.174.122.374.181.572.181z"></path>
+          </svg>
+
+          <!-- Card content (below the icon) -->
+          <div class="card-body">
+            <br>
+            <h5 class="card-title">Build your game collection.</h5>
+            <p class="card-text">Keep track of all the games you own and enjoy playing.</p>
+          </div>
         </div>
       </div>
     </div>
+
     <%# Card 3 %>
     <div class="carousel-item">
-      <div class="card">
-        <%= image_tag "controller.png" %>
-        <div class="card-body">
-          <h5 class="card-title">Review and share your thoughts with the community</h5>
-          <p class="card-text">Let others know what you think about the games you play.</p>
+      <div class="card text-center p-3">
+        <!-- Centering the icon above the text -->
+        <div class="d-flex flex-column align-items-center">
+          <svg id="fi_7927801" xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 512 512" fill="orange">
+            <g>
+              <path d="m220.151 156.796 35.849-14.863 35.85 14.863c4.803 1.983 10.319 1.356 14.56-1.72 4.22-3.071 6.54-8.121 6.13-13.322l-3.05-38.687 25.21-29.515c3.39-3.961 4.47-9.412 2.86-14.373-1.61-4.971-5.69-8.742-10.77-9.952l-37.73-9.062-20.27-33.096c-5.396-9.426-20.185-9.425-25.58 0l-20.27 33.096-37.73 9.062c-5.08 1.21-9.16 4.981-10.77 9.952-1.61 4.961-.53 10.412 2.86 14.373l25.21 29.515-3.05 38.687c-.41 5.201 1.91 10.252 6.13 13.322 4.231 3.06 9.741 3.72 14.561 1.72z"></path>
+              <path d="m511.267 118.189c-1.61-4.971-5.69-8.742-10.77-9.952l-37.73-9.062-20.27-33.096c-2.73-4.451-7.57-7.161-12.79-7.161s-10.06 2.711-12.79 7.161l-20.27 33.096-37.73 9.062c-5.08 1.21-9.16 4.981-10.77 9.952-1.61 4.961-.53 10.412 2.86 14.373l25.21 29.515-3.05 38.687c-.41 5.201 1.91 10.252 6.13 13.322 4.23 3.061 9.74 3.721 14.56 1.72l35.85-14.863 35.85 14.863c4.803 1.983 10.319 1.356 14.56-1.72 4.22-3.071 6.54-8.121 6.13-13.322l-3.05-38.687 25.21-29.515c3.39-3.961 4.47-9.412 2.86-14.373z"></path>
+              <path d="m123.883 216.947c3.12 0 6.21-.97 8.82-2.86 4.22-3.071 6.54-8.121 6.13-13.322l-3.05-38.687 25.21-29.515c3.39-3.961 4.47-9.412 2.86-14.373-1.61-4.971-5.69-8.742-10.77-9.952l-37.73-9.062-20.27-33.096c-2.73-4.451-7.57-7.161-12.79-7.161s-10.06 2.711-12.79 7.161l-20.27 33.096-37.73 9.062c-5.08 1.21-9.16 4.981-10.77 9.952-1.61 4.961-.53 10.412 2.86 14.373l25.21 29.515-3.05 38.687c-.41 5.201 1.91 10.252 6.13 13.322 4.23 3.061 9.74 3.721 14.56 1.72l35.85-14.863 35.85 14.863c1.85.76 3.8 1.14 5.74 1.14z"></path>
+              <path d="m432.58 360.82-17.75 101.73c-4.46 25.47-26.57 44.05-52.42 44.05h-102.37c-7.15 0-14.16-1.43-20.65-4.1-6.49-2.7-12.46-6.64-17.51-11.7-.31-.31-.63-.62-.95-.93v-168.98l.68-.24c14.43-5.18 25.68-16.74 30.44-31.32l8.95-28.64 12.06-38.59c3.55-10.85 15.21-16.76 26.07-13.21 19.88 6.48 32.52 24.96 32.52 44.79 0 4.86-.76 9.8-2.36 14.66l-13.44 44.1h76.07c25.64 0 45.08 23.13 40.66 48.38z"></path>
+              <path d="m176.018 512h-69.435c-8.237 0-14.914-6.677-14.914-14.914v-179.825c0-8.237 6.677-14.914 14.914-14.914h69.435c8.237 0 14.914 6.677 14.914 14.914v179.825c0 8.237-6.677 14.914-14.914 14.914z"></path>
+            </g>
+          </svg>
+
+          <!-- Card content (below the icon) -->
+          <div class="card-body">
+            <br>
+            <h5 class="card-title">Review games.</h5>
+            <p class="card-text">Share your thoughts with the community.</p>
+          </div>
         </div>
       </div>
     </div>
+
+
     <%# Card 4 %>
     <div class="carousel-item">
-      <div class="card">
-        <%= image_tag "controller.png" %>
-        <div class="card-body">
-          <h5 class="card-title">Wishlist the games you want to play</h5>
-          <p class="card-text">Save the games you're interested in playing later.</p>
+      <div class="card text-center p-3">
+        <!-- Centering the icon above the text -->
+        <div class="d-flex flex-column align-items-center">
+          <svg id="fi_18387704" xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 100 100" fill="orange">
+            <g clip-rule="evenodd" fill-rule="evenodd">
+              <path d="m97.5 41.886467c0 2.0255051-1.394783 3.793396-3.3758774 4.2553787l-18.2387161 4.2731628-4.2731628 18.2387161c-.4619293 1.9721985-2.2298737 3.3758774-4.2553787 3.3758774-2.0255585 0-3.7934494-1.4036789-4.2553749-3.3758774l-4.2643242-18.2387161-18.247551-4.2731628c-1.9722595-.4619827-3.3758774-2.2298737-3.3758774-4.2553787 0-2.0255585 1.4036179-3.7934494 3.3758774-4.2554321l18.247551-4.2731628 4.2643241-18.2386599c.4619255-1.9722586 2.2298164-3.3758783 4.2553749-3.3758783 2.0255051 0 3.7934494 1.4036198 4.2553787 3.3758783l4.2731628 18.2386589 18.2387161 4.2731628c1.9810945.4619837 3.3758775 2.2298746 3.3758775 4.2554331z"></path>
+              <path d="m2.5000019 28.1387596c0-1.0216179.7107027-1.9100094 1.7145901-2.1321087l9.1238022-2.0077744c.0177307 0 .0355158-.0088921.0621939-.0266781.0177307-.0266228.0266237-.0444088.0266237-.0621395l2.0077744-9.1238022c.2220974-1.0038881 1.1104889-1.7145901 2.1321621-1.7145901 1.0305099 0 1.9189034.7107019 2.1410007 1.7145901l2.0077744 9.1238022c0 .0177307.0088921.0355167.0266228.0621395.017786.017786.0444641.0266781.0621948.0266781l9.1238022 2.0077744c.9949951.2220993 1.7145882 1.1104908 1.7145882 2.1321087 0 1.0305653-.719593 1.9189568-1.7145882 2.1410561l-9.1238023 2.0077743c-.0177307 0-.0444088.0088921-.0621948.0266228-.0177307.0177841-.0266228.0444107-.0266228.0621948l-2.0077744 9.1238022c-.2220974.9949951-1.1104908 1.714592-2.1410007 1.714592-1.0216732 0-1.9100647-.7195969-2.1321621-1.714592l-2.0077744-9.1238022c0-.0177841-.008893-.0444107-.0266237-.0621948-.026678-.0177307-.0444631-.0266228-.0621938-.0266228l-9.1238022-2.0077743c-1.0038874-.2220993-1.7145901-1.1104908-1.7145901-2.1410561z"></path>
+              <path d="m43.2458992 73.1895218c0 1.0216675-.7195969 1.9100647-1.714592 2.1321564l-9.1238022 2.0077744c-.0177307 0-.0444069.0088425-.0621948.0266266-.0177307.02668-.0266228.0444107-.0266228.0621948l-2.0077744 9.1238022c-.2220974 1.003891-1.1104889 1.714592-2.1410007 1.714592-1.0216713 0-1.9100647-.710701-2.1321621-1.714592l-2.0077744-9.1238022c0-.0177841-.0088921-.0355148-.0266228-.0621948-.0266781-.0177841-.0444641-.0266266-.0621948-.0266266l-9.1238022-2.0077744c-1.0038872-.2220917-1.7145901-1.1104889-1.7145901-2.1321564 0-1.0305176.7107029-1.9189072 1.7145901-2.1410065l9.1238022-2.0077744c.0177307 0 .0355167-.0088882.0621948-.0266724.0177307-.0177307.0266228-.0444107.0266228-.0621948l2.0077744-9.1237526c.2220974-.9949913 1.1104908-1.7145882 2.1321621-1.7145882 1.0305119 0 1.9189034.7195969 2.1410007 1.7145882l2.0077744 9.1237526c0 .0177841.0088921.0444641.0266228.0621948.0177879.0177841.0444641.0266724.0621948.0266724l9.1238022 2.0077744c.9949951.2220993 1.714592 1.1104889 1.714592 2.1410065z"></path>
+            </g>
+          </svg>
+
+          <!-- Card content (below the icon) -->
+          <div class="card-body">
+            <br>
+            <h5 class="card-title">Make a wishlist.</h5>
+            <p class="card-text">Save the games you're interested in playing later.</p>
+          </div>
         </div>
       </div>
     </div>
+
     <%# Card 5 %>
     <div class="carousel-item">
-      <div class="card">
-        <%= image_tag "controller.png" %>
-        <div class="card-body">
-          <h5 class="card-title">Talk to our critic for personalized recommendations</h5>
-          <p class="card-text">Get tailored game suggestions our AI game expert.</p>
+      <div class="card text-center p-3">
+        <!-- Centering the icon above the text -->
+        <div class="d-flex flex-column align-items-center">
+          <svg id="fi_12122375" xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 64 64" fill="orange" data-name="Layer 1">
+            <path d="m26.05 21.94c.67.21 1.32.47 1.96.75.17-8.68 7.27-15.69 15.98-15.69s16 7.18 16 16c0 3.72-1.3 7.34-3.67 10.2-.28.33-.31.81-.07 1.17l2.62 4.13-6.66-1.48c-.23-.05-.48-.02-.69.09-2.3 1.23-4.9 1.88-7.52 1.88-1.45 0-2.85-.21-4.18-.57.09.69.14 1.39.16 2.1 1.3.3 2.64.47 4.02.47 2.82 0 5.62-.67 8.13-1.94l8.66 1.92c.07.02.14.02.22.02.32 0 .63-.16.82-.43.23-.33.24-.77.03-1.11l-3.52-5.56c2.38-3.12 3.68-6.96 3.68-10.9 0-9.93-8.07-18-18-18s-17.39 7.51-17.95 16.94z"></path>
+            <path d="m36 16h16v2h-16z"></path>
+            <path d="m36 22h16v2h-16z"></path>
+            <path d="m40 28h12v2h-12z"></path>
+            <path d="m15.69 37h-.46l-1.05 4h2.57z"></path>
+            <path d="m11.54 56.89c2.52 1.35 5.4 2.11 8.46 2.11 9.94 0 18-8.06 18-18s-8.06-18-18-18-18 8.06-18 18c0 4.36 1.55 8.36 4.13 11.47l-4.13 6.53zm10.92-11.89h2.5v-8h-2.5v-2h7v2h-2.5v8h2.5v2h-7zm-8.97-9.25c.12-.44.51-.75.97-.75h2c.45 0 .85.31.97.75l2.96 11.25h-2.07l-1.05-4h-3.62l-1.05 4h-2.07z"></path>
+          </svg>
+
+          <!-- Card content (below the icon) -->
+          <div class="card-body">
+            <br>
+            <h5 class="card-title">Ask the critic.</h5>
+            <p class="card-text">Get tailored game suggestions from the Controller Critic AI game expert.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+
 
   <%# Carousel Controls %>
   <button class="carousel-control-prev" type="button" data-bs-target="#featureCarousel" data-bs-slide="prev">
