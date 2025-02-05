@@ -26,46 +26,50 @@
 
     <div class="game-details">
       <div class="console-logos">
-  <% @game.platforms.each do |platform| %>
-    <% platform_name = platform.name.downcase %>
+        <% # Initialize variables to prevent duplicate icons %>
+        <% displayed_playstation_icon = false %>
+        <% displayed_xbox_icon = false %>
+        <% displayed_pc_icon = false %>
+        <% displayed_meta_icon = false %>
 
-    <%# Dynamically select icons based on platform name %>
-    <% case platform_name %>
-      <% when "playstation 4" %>
-        <i class="fa-brands fa-playstation console-logo" title="PlayStation 4"></i>
-      <% when "playstation 5" %>
-        <i class="fa-brands fa-playstation console-logo" title="PlayStation 5"></i>
-      <% when "playstation 2" %>
-        <i class="fa-brands fa-playstation console-logo" title="PlayStation 2"></i>
-      <% when "playstation 3" %>
-        <i class="fa-brands fa-playstation console-logo" title="PlayStation 3"></i>
-      <% when "xbox" %>
-        <i class="fa-brands fa-xbox console-logo" title="Xbox"></i>
-      <% when "xbox one" %>
-        <i class="fa-brands fa-xbox console-logo" title="Xbox One"></i>
-      <% when "xbox series x|s" %>
-        <i class="fa-brands fa-xbox console-logo" title="Xbox X|S"></i>
-      <% when "xbox 360" %>
-        <i class="fa-brands fa-xbox console-logo" title="Xbox 360"></i>
-      <% when "mac" %>
-        <i class="fa-solid fa-laptop console-logo" title="MAC"></i>
-      <% when "windows", "pc", "pc (microsoft windows)", "mac" %>
-        <i class="fa-solid fa-laptop console-logo" title="PC"></i>
-      <% when "meta quest 3" %>
-        <i class="fa-brands fa-meta" title="Meta Quest 3"></i>
-      <% when "meta quest 2" %>
-        <i class="fa-brands fa-meta" title="Meta Quest 2"></i>
-      <% else %>
-        <i class="fa-solid fa-gamepad console-logo" title="<%= platform.name %>"></i>
-        <%= platform.name %>
-    <% end %>
-  <% end %>
-</div>
+        <% @game.platforms.each do |platform| %>
+          <% platform_name = platform.name.downcase %>
+
+          <%# Dynamically select icons based on platform name %>
+          <% case platform_name %>
+            <% when "playstation 2", "playstation 3", "playstation 4", "playstation 5" %>
+              <% unless displayed_playstation_icon %>
+                <i class="fa-brands fa-playstation console-logo" title="PlayStation"></i>
+                <% displayed_playstation_icon = true %>
+              <% end %>
+
+            <% when "xbox", "xbox one", "xbox series x|s", "xbox 360" %>
+              <% unless displayed_xbox_icon %>
+                <i class="fa-brands fa-xbox console-logo" title="Xbox"></i>
+                <% displayed_xbox_icon = true %>
+              <% end %>
+
+            <% when "windows", "pc", "pc (microsoft windows)", "mac" %>
+              <% unless displayed_pc_icon %>
+                <i class="fa-solid fa-laptop console-logo" title="PC/Mac"></i>
+                <% displayed_pc_icon = true %>
+              <% end %>
+
+            <% when "meta quest 2", "meta quest 3" %>
+              <% unless displayed_meta_icon %>
+                <i class="fa-brands fa-meta console-logo" title="Meta Quest"></i>
+                <% displayed_meta_icon = true %>
+              <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
       <br>
       <h2><span class="light-text">Released </span> <%= @game.year_published || "N/A" %></h2>
       <h2><span class="light-text">Genre </span> <%= @game.genre || "Unknown Genre" %></h2>
       <h2><span class="light-text">Publisher </span> <%= @game.publisher || "N/A" %></h2>
     </div>
+  </div>
 </div>
 
 <%= render "reviews/reviews", game: @game, reviews: @game.reviews %>

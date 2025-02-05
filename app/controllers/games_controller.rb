@@ -1,10 +1,11 @@
 class GamesController < ApplicationController
-  require 'httparty'
-
   def index
     if params[:query].present?
+      # Normalize the query to handle abbreviations like 'ps4' and 'ps5'
+      normalized_query = normalize_query(params[:query])
+
       # Use the search_games scope and order alphabetically by title
-      @games = Game.search_games(params[:query]).reorder(:title)
+      @games = Game.search_games(normalized_query).reorder(:title)
 
       # Flash message if no games are found
       flash.now[:alert] = "No games found for '#{params[:query]}'" if @games.empty?
@@ -29,9 +30,20 @@ class GamesController < ApplicationController
     # Fetch and order reviews by most recent
     @reviews = @game.reviews.order(count: :desc)
   end
-end
 
   private
+
+  # Method to normalize the query for known abbreviations
+  def normalize_query(query)
+    query = query.downcase
+    query.gsub!("ps5", "playstation 5")
+    query.gsub!("ps4", "playstation 4")
+    query.gsub!("ps3", "playstation 3")
+    query.gsub!("ps2", "playstation 2")
+    query
+  end
+end
+
 
   # def fetch_access_token
   #   response = HTTParty.post('https://id.twitch.tv/oauth2/token', body: {

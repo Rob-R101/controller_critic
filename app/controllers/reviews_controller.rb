@@ -11,8 +11,15 @@ class ReviewsController < ApplicationController
 
   def downvote
     @review = @game.reviews.find(params[:id])
-    @review.decrement!(:count)
-    redirect_to game_path(@game, anchor: "review-#{@review.id}"), alert: "You downvoted the review!"
+
+    if @review.count.to_i > 0
+      @review.decrement!(:count)
+      flash[:notice] = "You downvoted the review!"
+    else
+      flash[:alert] = "Cannot downvote below 0."
+    end
+
+    redirect_to game_path(@game, anchor: "review-#{@review.id}")
   end
 
 
