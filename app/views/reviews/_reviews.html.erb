@@ -2,11 +2,21 @@
   <h2 class="user-review-title">User Reviews</h2>
   <% reviews.each do |review| %>
     <div class="review" id="review-<%= review.id %>">
-      <h3>
+      <div class="review-header">
         <% if review.user.present? %>
-          <span class="review-user"><%= link_to review.user.username, user_path(review.user) %></span>
+          <div class="review-user-info">
+            <%= link_to user_path(review.user) do %>
+              <%= image_tag(review.user.profile_picture_url, alt: review.user.username, class: "review-user-image") %>
+            <% end %>
+            <span class="review-user">
+              <%= link_to review.user.username, user_path(review.user) %>
+            </span>
+          </div>
         <% else %>
-          <span class="review-user">Anonymous</span>
+          <div class="review-user-info">
+            <%= image_tag("profile-pic.png", alt: "Anonymous User", class: "review-user-image") %>
+            <span class="review-user">Anonymous</span>
+          </div>
         <% end %>
 
         <% if review.created_at.present? %>
@@ -14,7 +24,7 @@
         <% else %>
           <span class="timestamp">[Unknown Date]</span>
         <% end %>
-      </h3>
+      </div>
 
       <p class="review-content"><%= review.review %></p>
 
@@ -41,8 +51,6 @@
   <% end %>
 </div>
 
-
-
 <% if user_signed_in? %>
   <div class="review-input">
     <!-- Display error messages if any -->
@@ -64,3 +72,4 @@
 <% else %>
   <p>You must <%= link_to 'sign in', new_user_session_path %> to leave a review.</p>
 <% end %>
+
