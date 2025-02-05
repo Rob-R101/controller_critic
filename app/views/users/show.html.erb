@@ -60,7 +60,7 @@
                     <h2><%= my_game.game.title %></h2>
                     <h3><%= my_game.game.genre %></h3>
                     <br>
-                    <p><%= my_game.game.description %></p>
+                    <p><%= my_game.game.description&.truncate(150) || "No description available." %></p>
                   </div>
                   <div class="game-card-rating">
                     <%# <p>Game Rating Here</p> %>
@@ -87,7 +87,7 @@
                     <h2><%= my_game.game.title %></h2>
                     <h3><%= my_game.game.genre %></h3>
                     <br>
-                    <p><%= my_game.game.description %></p>
+                    <p><%= my_game.game.description&.truncate(150) || "No description available." %></p>
                   </div>
                   <div class="game-card-rating-list">
                     <%# <p>Game Rating Here</p> %>
@@ -157,7 +157,7 @@
                     <h2><%= wishlist.game.title %></h2>
                     <h3><%= wishlist.game.genre %></h3>
                     <br>
-                    <p><%= wishlist.game.description %></p>
+                    <p><%= wishlist.game.description&.truncate(150) || "No description available." %></p>
                   </div>
                   <div class="game-card-rating-list">
                     <%# <p>Game Rating Here</p> %>

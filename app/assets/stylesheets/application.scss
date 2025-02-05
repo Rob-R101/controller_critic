@@ -92,3 +92,11 @@ a {
   margin-top: 10px;
   text-align: center;
 }
+
+
+.logout-btn:hover,
+.logout-btn:focus,
+.logout-btn:active {
+  background-color: $orange !important;
+  color: $gray !important;
+}
