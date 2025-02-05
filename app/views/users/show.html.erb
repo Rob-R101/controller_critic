@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="profile-image">
-      <%= image_tag("profile-pic.png", alt: "Profile Picture", class: "profile-image") %>
+      <%= image_tag(@user.profile_picture_url, alt: @user.username, class: "profile-image") %>
     </div>
   </div>
 </div>

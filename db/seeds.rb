@@ -89,16 +89,21 @@ games = Game.all
 
 # Create Users with profile pictures
 users = 10.times.map do
+  username = Faker::Internet.unique.username(specifier: 5..12) # Generate a unique username
   User.create!(
     email: Faker::Internet.unique.email,
     password: 'password',
     password_confirmation: 'password',
-    username: Faker::Internet.unique.username(specifier: 5..12),
-    profile_picture_url: "https://loremflickr.com/320/320/person"
+    username: username,
+    profile_picture_url: "https://api.dicebear.com/7.x/bottts-neutral/png?seed=#{username}"
   ).tap do |user|
     puts "Created user: #{user.username} (#{user.email})"
   end
 end
+
+
+
+
 
 # Predefined review comments
 review_comments = [
