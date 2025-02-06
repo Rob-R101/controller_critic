@@ -208,7 +208,7 @@
       <div class="review-user-page" id="review-<%= review.id %>">
         <h3>
           <% if review.user.present? %>
-            <span class="review-user"><%= link_to review.user.username, user_path(review.user) %></span>
+            <span class="review-user"><%= link_to review.game.title, game_path(review.game) %></span>
             <% else %>
               <span class="review-user">Anonymous</span>
           <% end %>
