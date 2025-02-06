@@ -1,22 +1,21 @@
-.carousel {
-  position: relative;
-  z-index: 25;
-  margin-top: 350px;
-}
+// .carousel {
+//   position: relative;
+//   z-index: 25;
+//   margin-top: 350px;
+// }
 
-.carousel-item {
-  transition: transform 1s ease-in-out;
-  .card {
-    margin: 0 auto;
+// .carousel-item {
+//   transition: transform 1s ease-in-out;
+//   .card {
+//     margin: 0 auto;
 
-  }
-}
+//   }
+// }
 
 .card {
   width: 400px;
   height: 300px;
-  border-style: solid 2px;
-  border-color: $orange;
+  border: solid 3px $orange;
   background-color: $gray;
 }
 
