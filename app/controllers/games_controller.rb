@@ -27,9 +27,14 @@ class GamesController < ApplicationController
       @user_wishlist = nil
     end
 
-    # Fetch reviews and handle null vote counts by treating them as 0
-    @reviews = @game.reviews.to_a.sort_by { |review| -(review.count || 0) }
+    # Fetch and paginate reviews, sorting by count descending (null counts are treated as 0)
+    @reviews = @game.reviews
+               .order(Arel.sql('COALESCE(count, 0) DESC'))
+               .page(params[:page])
+               .per(10)
   end
+
+
 
 
   private

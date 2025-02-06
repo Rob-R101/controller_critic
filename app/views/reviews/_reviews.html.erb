@@ -1,75 +1,61 @@
 <div class="reviews-container">
   <h2 class="user-review-title">User Reviews</h2>
-  <% reviews.each do |review| %>
-    <div class="review" id="review-<%= review.id %>">
-      <div class="review-header">
-        <% if review.user.present? %>
-          <div class="review-user-info">
-            <%= link_to user_path(review.user) do %>
-              <%= image_tag(review.user.profile_picture_url, alt: review.user.username, class: "review-user-image") %>
-            <% end %>
-            <span class="review-user">
-              <%= link_to review.user.username, user_path(review.user) %>
-            </span>
-          </div>
-        <% else %>
-          <div class="review-user-info">
-            <%= image_tag("profile-pic.png", alt: "Anonymous User", class: "review-user-image") %>
-            <span class="review-user">Anonymous</span>
-          </div>
-        <% end %>
-
-        <% if review.created_at.present? %>
-          <span class="timestamp">[<%= review.created_at.strftime("%B %d, %Y") %>]</span>
-        <% else %>
-          <span class="timestamp">[Unknown Date]</span>
-        <% end %>
-      </div>
-
-      <p class="review-content"><%= review.review %></p>
-
-      <div class="review-votes">
-        <% if user_signed_in? %>
-          <%= form_with url: upvote_game_review_path(game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
-            <%= form.button type: 'submit', class: "vote-button upvote" do %>
-              <i class="fa-solid fa-thumbs-up"></i>
-            <% end %>
+  <% if @reviews.any? %>
+    <% @reviews.each do |review| %>
+      <div class="review" id="review-<%= review.id %>">
+        <div class="review-header">
+          <% if review.user.present? %>
+            <div class="review-user-info">
+              <%= link_to user_path(review.user) do %>
+                <%= image_tag(review.user.profile_picture_url, alt: review.user.username, class: "review-user-image") %>
+              <% end %>
+              <span class="review-user">
+                <%= link_to review.user.username, user_path(review.user) %>
+              </span>
+            </div>
+          <% else %>
+            <div class="review-user-info">
+              <%= image_tag("profile-pic.png", alt: "Anonymous User", class: "review-user-image") %>
+              <span class="review-user">Anonymous</span>
+            </div>
           <% end %>
 
-          <span class="vote-count"> <%= review.count || 0 %></span>
-
-          <%= form_with url: downvote_game_review_path(game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
-            <%= form.button type: 'submit', class: "vote-button downvote" do %>
-              <i class="fa-solid fa-thumbs-down"></i>
-            <% end %>
+          <% if review.created_at.present? %>
+            <span class="timestamp">[<%= review.created_at.strftime("%B %d, %Y") %>]</span>
+          <% else %>
+            <span class="timestamp">[Unknown Date]</span>
           <% end %>
-        <% else %>
-          <p class="login-prompt">You must <%= link_to 'sign in', new_user_session_path %> to vote on reviews.</p>
-        <% end %>
+        </div>
+
+        <p class="review-content"><%= review.review %></p>
+
+        <div class="review-votes">
+          <% if user_signed_in? %>
+            <%= form_with url: upvote_game_review_path(@game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
+              <%= form.button type: 'submit', class: "vote-button upvote" do %>
+                <i class="fa-solid fa-thumbs-up"></i>
+              <% end %>
+            <% end %>
+
+            <span class="vote-count"> <%= review.count || 0 %></span>
+
+            <%= form_with url: downvote_game_review_path(@game, review, anchor: "review-#{review.id}"), method: :patch, local: true, data: { turbo: false } do |form| %>
+              <%= form.button type: 'submit', class: "vote-button downvote" do %>
+                <i class="fa-solid fa-thumbs-down"></i>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p class="login-prompt">You must <%= link_to 'sign in', new_user_session_path %> to vote on reviews.</p>
+          <% end %>
+        </div>
       </div>
+    <% end %>
+
+    <!-- Add pagination links -->
+    <div class="pagination-links">
+      <%= paginate @reviews, params: { anchor: 'reviews' } %>
     </div>
+  <% else %>
+    <p>No reviews have been posted yet. Be the first to leave a review!</p>
   <% end %>
 </div>
-
-<% if user_signed_in? %>
-  <div class="review-input">
-    <!-- Display error messages if any -->
-    <% if flash[:alert].present? %>
-      <div class="error-messages">
-        <p><%= flash[:alert] %></p>
-      </div>
-    <% end %>
-
-    <%= form_with(model: [@game, @game.reviews.build], local: true) do |form| %>
-      <div class="field">
-        <%= form.text_area :review, placeholder: "Write your review here..." %>
-      </div>
-      <div class="actions">
-        <%= form.submit "Add Review" %>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <p>You must <%= link_to 'sign in', new_user_session_path %> to leave a review.</p>
-<% end %>
-

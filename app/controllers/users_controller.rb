@@ -4,7 +4,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @wishlists = @user.wishlists
     @mygames = @user.my_games.includes(:game)
-    @reviews = @user.reviews
+
+    # Paginate reviews (10 per page)
+    @reviews = @user.reviews.order(created_at: :desc).page(params[:page]).per(10)
 
     # Correct way to get the most popular genre
     @top_genre = @mygames.joins(:game)
@@ -14,6 +16,7 @@ class UsersController < ApplicationController
                          .keys
                          .first
   end
+
 
   def update
     @user = current_user
