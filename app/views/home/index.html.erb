@@ -1,34 +1,36 @@
-<%# <div class="dropshadow-top">
-  <div class="top-background"></div>
-</div> %>
 
-<div class="title-text">
-  <h1>Find your next adventure</h1>
-</div>
+<div class="title-search-container">
+  <div class="title-text">
+    <h1>Find your next adventure</h1>
+  </div>
 
-<div class="search-bar-container">
-  <div class="search-bar">
-    <%= form_with url: games_path, method: :get, class: "d-flex search-form" do %>
-        <div class="search-box">
-          <%= text_field_tag :query,
-                params[:query],
-                class: "form-control search-input",
-                placeholder: "Search for a game / genre / platform"%>
-        </div>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary search-btn" %>
-      <% end %>
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <%= form_with url: games_path, method: :get, class: "d-flex search-form" do %>
+          <div class="search-box">
+            <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control search-input",
+                  placeholder: "Search for a game / genre / platform"%>
+          </div>
+          <%= submit_tag "Search", name: "", class: "btn btn-primary search-btn" %>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <h2>Search. Collect. Review.</h2>
   </div>
 </div>
 
-<div class="instructions">
-  <h2>Search. Collect. Review.</h2>
+<div class="bottom-background">
+   <div class="top-background"></div>
+   <div class="instruction-card-container">
+    <%= render "feature_cards" %>
+   </div>
 </div>
 
-<br>
-<br>
-<%# <div class="bottom-background"></div> %>
 
-<%= render "feature_cards" %>
 
 <%# <%= render "carousel" %>
 
