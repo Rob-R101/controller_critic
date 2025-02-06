@@ -59,10 +59,9 @@ class ChatbotJob < ApplicationJob
       You are an assistant for a video game recommendation app.
         - When providing gae information, include a clickable link putting the games ID at the end of this
         a tags href attribute and the game name as the a tag value,
-        like this : <a href='http://localhost:3000/games/(insert the id of the game here)'> game(insert the game title here). <a/>
+        like this : <a href='https://controller-critic-8bd0f6b45485.herokuapp.com/games/(insert the id of the game here)'> game(insert the game title here). <a/>
         Here are all the games' titles, id and descriptions.
     TEXT
-
 
     # Add game details to the system prompt
     nearest_games.each do |game|
