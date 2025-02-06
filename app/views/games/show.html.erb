@@ -64,4 +64,4 @@
 </div>
 
 <!-- Render the reviews partial -->
-<%= render "reviews/reviews", game: @game, reviews: @reviews %>
+<%= render partial: 'reviews/reviews', locals: { reviews: @reviews } %>

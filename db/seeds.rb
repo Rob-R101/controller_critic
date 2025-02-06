@@ -101,10 +101,6 @@ users = 10.times.map do
   end
 end
 
-
-
-
-
 # Predefined review comments
 review_comments = [
   "Loved this game!",
@@ -123,18 +119,17 @@ review_comments = [
 ]
 
 # Ensure each game has at least one review
-games.each do |game|
+reviews = games.map do |game|
   Review.create!(
     user: users.sample,
     game: game,
     review: review_comments.sample
-  )
-  puts "Created review for game: #{game.title}"
+  ).tap { |review| puts "Created review for game: #{game.title}" }
 end
 
 # Create additional random reviews
 (random_reviews = 750 - games.count).times do
-  Review.create!(
+  reviews << Review.create!(
     user: users.sample,
     game: games.sample,
     review: review_comments.sample
@@ -155,11 +150,21 @@ users.each do |user|
   end
 end
 
+# **Upvote Reviews**
+reviews.each do |review|
+  # Randomly assign upvotes for each review from different users
+  users.sample(rand(1..8)).each do |user|
+    Vote.create!(user: user, review: review)
+  end
+  puts "Upvoted review for game: #{review.game.title} (#{review.review})"
+end
+
 # Final log output
 puts "Seeded database with:
 - #{User.count} users
 - #{Game.count} games
 - #{Platform.count} platforms
 - #{Review.count} reviews
+- #{Vote.count} votes
 - #{MyGame.count} 'My Games' entries
 - #{Wishlist.count} wishlist entries"

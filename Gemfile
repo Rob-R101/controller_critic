@@ -39,6 +39,9 @@ gem "neighbor"
 
 gem 'redcarpet'
 
+gem 'kaminari'
+
+
 # Add faker for generating fake data
 gem 'faker'
 
