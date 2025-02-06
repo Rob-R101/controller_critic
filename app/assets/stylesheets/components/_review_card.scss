@@ -77,23 +77,25 @@
 }
 
 .actions input[type="submit"] {
-  background: linear-gradient(to right, #3f51b5, #673ab7);
-  border: none;
-  border-radius: 8px;
+  background: black;
+  border: 1px solid $orange;
+  border-radius: 20px;
   padding: 10px 20px;
-  color: white;
+  color: $orange;
   font-size: 14px;
   font-family: "Albert Sans", sans-serif;
   cursor: pointer;
 }
 
 .actions input[type="submit"]:hover {
-  background: linear-gradient(to right, #5a66d6, #7d55e1);
+  background: $orange;
+  color: $gray;
 }
 
 
 .actions input[type="submit"]:hover {
-  background: linear-gradient(to right, #5a66d6, #7d55e1);
+  background: $orange;
+  color: $gray;
 }
 
 .review {
