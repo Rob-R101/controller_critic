@@ -1,5 +1,6 @@
 <div class="reviews-container">
   <h2 class="user-review-title">User Reviews</h2>
+
   <% if @reviews.any? %>
     <% @reviews.each do |review| %>
       <div class="review" id="review-<%= review.id %>">
@@ -50,12 +51,9 @@
         </div>
       </div>
     <% end %>
-
-    <!-- Add pagination links -->
-    <div class="pagination-links">
-      <%= paginate @reviews, params: { anchor: 'reviews' } %>
-    </div>
   <% else %>
-    <p>No reviews have been posted yet. Be the first to leave a review!</p>
+    <div class="no-reviews">
+      <h2>No Reviews Found</h2>
+    </div>
   <% end %>
 </div>
