@@ -106,7 +106,6 @@
                 <h3><%= wishlist.game.genre %></h3>
                 <p><%= wishlist.game.description %></p>
               </div>
-
             </div>
           <% end %>
         <% end %>
@@ -141,14 +140,11 @@
             <p class="review-content"><%= review.review %></p>
           </div>
         <% end %>
-
-        <!-- Pagination links with anchor -->
-        <div class="pagination-links">
-          <%= paginate @reviews, params: { anchor: 'reviews' } %>
-        </div>
       <% else %>
-        <p>No reviews have been posted yet.</p>
-      <% end %>
+        <div class="no-reviews">
+          <h2>No Reviews Found</h2>
+        </div>
+      <% end %> <!-- Missing end was added here -->
     </div>
   </div>
 </div>
