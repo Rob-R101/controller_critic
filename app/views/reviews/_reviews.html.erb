@@ -57,3 +57,25 @@
     </div>
   <% end %>
 </div>
+
+<% if user_signed_in? %>
+  <div class="review-input">
+    <!-- Display error messages if any -->
+    <% if flash[:alert].present? %>
+      <div class="error-messages">
+        <p><%= flash[:alert] %></p>
+      </div>
+    <% end %>
+
+    <%= form_with(model: [@game, @game.reviews.build], local: true) do |form| %>
+      <div class="field">
+        <%= form.text_area :review, placeholder: "Write your review here..." %>
+      </div>
+      <div class="actions">
+        <%= form.submit "Add Review" %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>You must <%= link_to 'sign in', new_user_session_path %> to leave a review.</p>
+<% end %>
