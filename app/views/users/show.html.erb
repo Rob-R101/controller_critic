@@ -1,31 +1,30 @@
 <div class="user-container">
   <% if flash[:alert].present? || flash[:notice].present? %>
-    <div class="flash-messages">
-      <% if flash[:alert].present? %>
-        <div class="alert alert-danger">
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-      <% if flash[:notice].present? %>
-        <div class="alert alert-success">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-
+  <div class="flash-messages">
+    <% if flash[:alert].present? %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <% if flash[:notice].present? %>
+      <div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
   <div class="user-details-card">
     <div class="details">
       <div class="profile-info">
         <h1 class="username"><%= "@#{@user.username}" %></h1>
         <br>
-        <h2><span class="light-text">Games in collection</span> <%= @mygames.count %></h2>
-        <h2><span class="light-text">Wishlist</span> <%= @wishlists.count %></h2>
-        <h2><span class="light-text">Total reviews</span> <%= @reviews.total_count || "No reviews yet" %></h2>
-        <h2><span class="light-text">Top genre</span> <%= @top_genre || "No genres found" %></h2>
+        <h2><span class="light-text">Games in collection  </span> <%= @mygames.count %></h2>
+        <h2><span class="light-text">Wishlist  </span> <%= @wishlists.count %></h2>
+        <h2><span class="light-text">Total reviews  </span> <%= @reviews.count || "No reviews yet" %></h2>
+        <h2><span class="light-text">Top genre  </span> <%= @top_genre || "No genres found" %></h2>
       </div>
       <div class="console-logos">
-        <h2><span class="light-text">Consoles</span></h2>
+        <h2><span class="light-text">Consoles </span><h2>
         <i class="fa-brands console-logo fa-playstation"></i>
         <i class="fa-brands console-logo fa-xbox"></i>
         <i class="fa-solid console-logo fa-laptop"></i>
@@ -39,112 +38,190 @@
 
 <div class="tab-container">
   <ul class="nav" id="gameTabs">
-    <li class="nav-item">
-      <h2>
-        <a class="nav-link <%= params[:anchor] == 'mygames' || params[:anchor].blank? ? 'active' : '' %>"
-           id="mygames-tab" data-bs-toggle="tab" href="#mygames" role="tab" aria-controls="mygames">
-          Game Collection
-        </a>
-      </h2>
+    <li class="nav-item" >
+      <h2><a class="nav-link active" id="mygames-tab" data-bs-toggle="tab" data-bs-target="#mygames" type="button" role="tab" aria-controls="mygames" aria-selected="true">Game Collection</a></h2>
     </li>
     <li class="nav-item">
-      <h2>
-        <a class="nav-link <%= params[:anchor] == 'wishlist' ? 'active' : '' %>"
-           id="wishlist-tab" data-bs-toggle="tab" href="#wishlist" role="tab" aria-controls="wishlist">
-          Wishlist
-        </a>
-      </h2>
+      <h2><a class="nav-link" id="wishlist-tab" data-bs-toggle="tab" data-bs-target="#wishlist" type="button" role="tab" aria-controls="wishlist" aria-selected="false">Wishlist</a></h2>
     </li>
     <li class="nav-item">
-      <h2>
-        <a class="nav-link <%= params[:anchor] == 'reviews' ? 'active' : '' %>"
-           id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews">
-          Reviews
-        </a>
-      </h2>
+      <h2><a class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a></h2>
     </li>
   </ul>
 </div>
 
 <div class="tab-content" id="gameTabsContent">
   <!-- My Games Tab -->
-  <div class="tab-pane fade <%= params[:anchor] == 'mygames' || params[:anchor].blank? ? 'show active' : '' %>"
-       id="mygames" role="tabpanel" aria-labelledby="mygames-tab">
-    <div class="search-container">
-      <% if @mygames.any? %>
-        <% @mygames.each do |my_game| %>
-          <%= link_to game_path(my_game.game) do %>
-            <div class="game-card">
-              <%= image_tag my_game.game.product_image %>
-              <div class="game-card-details">
-                <h2><%= my_game.game.title %></h2>
-                <h3><%= my_game.game.genre %></h3>
-                <p><%= my_game.game.description&.truncate(150) || "No description available." %></p>
-              </div>
+  <div class="tab-pane fade show active" id="mygames" aria-labelledby="mygames-tab">
+    <%# View Toggle %>
+    <div class="view-tab-container nav" id="nav-tab" role="tablist">
+      <ul class="nav" id="card-list-view">
+        <li class="nav-item">
+          <h2><a class="nav-link active" id="mygames-card-view-tab" data-bs-toggle="tab" data-bs-target="#mygames-card-view" type="button" role="tab" aria-controls="mygames-card-view" aria-selected="true"><i class="fas fa-th view-toggle"></i></a></h2>
+        </li>
+        <li class="nav-item">
+          <h2><a class="nav-link" id="mygames-list-view-tab" data-bs-toggle="tab" data-bs-target="#mygames-list-view" type="button" role="tab" aria-controls="mygames-list-view" aria-selected="false"><i class="fa-solid fa-list view-toggle"></i></a></h2>
+        </li>
+      </ul>
+    </div>
+    <%# Card View %>
+    <div class="tab-content" id="mygamesCardViewContent">
+      <div class="tab-pane fade show active" id="mygames-card-view" aria-labelledby="mygames-card-view-tab">
+        <div class="search-container">
+          <% if @mygames.any? %>
+            <% @mygames.each do |my_game| %>
+              <%= link_to game_path(my_game.game) do %>
+                <div class="game-card">
+                  <%= image_tag my_game.game.product_image %>
+                  <div class="game-card-details">
+                    <h2><%= my_game.game.title %></h2>
+                    <h3><%= my_game.game.genre %></h3>
+                    <br>
+                    <p><%= my_game.game.description&.truncate(150) || "No description available." %></p>
+                  </div>
+                  <div class="game-card-rating">
+                    <%# <p>Game Rating Here</p> %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <div class="no-games">
+              <h2>No Games Found</h2>
             </div>
           <% end %>
-        <% end %>
-      <% else %>
-        <div class="no-games">
-          <h2>No Games Found</h2>
         </div>
-      <% end %>
+      </div>
+      <%# List View %>
+      <div class="tab-pane fade" id="mygames-list-view" aria-labelledby="mygames-list-view-tab">
+        <div class="search-container-list">
+          <% if @mygames.any? %>
+            <% @mygames.each do |my_game| %>
+              <%= link_to game_path(my_game.game) do %>
+                <div class="game-card-list">
+                  <%= image_tag my_game.game.product_image %>
+                  <div class="game-card-details-list">
+                    <div class="game-title-rating">
+                      <h2 class="game-title"><%= my_game.game.title %></h2>
+                      <h2 class="game-rating-list"><%= my_game.game.aggregated_rating ? (my_game.game.aggregated_rating.to_f / 10).round(1) : "N/A" %></h2>
+                    </div>
+                    <div class="game-title-genre">
+                      <p><strong>Rating:</strong> <%= my_game.game.aggregated_rating&.to_i || "N/A" %></p>
+                      <p><strong>Genre:</strong> <%= my_game.game.genre || "Unknown Genre" %></p>
+                      <p><strong>Description:</strong> <%= my_game.game.description&.truncate(150) || "No description available." %></p>
+                    </div>
+                  </div>
+                  <div class="game-card-rating-list">
+                    <%# <p>Game Rating Here</p> %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <div class="no-games">
+              <h2>No Games Found</h2>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-
   <!-- Wishlist Tab -->
-  <div class="tab-pane fade <%= params[:anchor] == 'wishlist' ? 'show active' : '' %>"
-       id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
-    <div class="search-container">
-      <% if @wishlists.any? %>
-        <% @wishlists.each do |wishlist| %>
-          <%= link_to game_path(wishlist.game) do %>
-            <div class="game-card">
-              <%= image_tag wishlist.game.product_image %>
-              <div class="game-card-details">
-                <h2><%= wishlist.game.title %></h2>
-                <h3><%= wishlist.game.genre %></h3>
-                <p><%= wishlist.game.description %></p>
-              </div>
+  <div class="tab-pane fade" id="wishlist" aria-labelledby="wishlist-tab">
+    <%# View Toggle %>
+    <div class="view-tab-container nav" id="nav-tab" role="tablist">
+      <ul class="nav" id="card-list-view">
+        <li class="nav-item">
+          <h2><a class="nav-link active" id="wishlist-card-view-tab" data-bs-toggle="tab" data-bs-target="#wishlist-card-view" type="button" role="tab" aria-controls="wishlist-card-view" aria-selected="true"><i class="fas fa-th view-toggle"></i></a></h2>
+        </li>
+        <li class="nav-item">
+          <h2><a class="nav-link" id="wishlist-list-view-tab" data-bs-toggle="tab" data-bs-target="#wishlist-list-view" type="button" role="tab" aria-controls="wishlist-list-view" aria-selected="false"><i class="fa-solid fa-list view-toggle"></i></a></h2>
+        </li>
+      </ul>
+    </div>
+    <%# Card View %>
+    <div class="tab-content" id="wishlistCardViewContent">
+      <div class="tab-pane fade show active" id="wishlist-card-view" aria-labelledby="wishlist-card-view-tab">
+        <div class="search-container">
+          <% if @wishlists.any? %>
+            <% @wishlists.each do |wishlist| %>
+              <%= link_to game_path(wishlist.game) do %>
+                <div class="game-card">
+                  <%= image_tag wishlist.game.product_image %>
+                  <div class="game-card-details">
+                    <h2><%= wishlist.game.title %></h2>
+                    <h3><%= wishlist.game.genre %></h3>
+                    <br>
+                    <p><%= wishlist.game.description&.truncate(150) %></p>
+                  </div>
+                  <div class="game-card-rating">
+                    <%# <p>Game Rating Here</p> %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <div class="no-games">
+              <h2>No Games Found</h2>
             </div>
           <% end %>
-        <% end %>
-      <% else %>
-        <div class="no-games">
-          <h2>No Games Found</h2>
         </div>
-      <% end %>
+      </div>
+      <%# List View %>
+      <div class="tab-pane fade" id="wishlist-list-view" aria-labelledby="wishlist-list-view-tab">
+        <div class="search-container-list">
+          <% if @wishlists.any? %>
+            <% @wishlists.each do |wishlist| %>
+              <%= link_to game_path(wishlist.game) do %>
+                <div class="game-card-list">
+                  <%= image_tag wishlist.game.product_image %>
+                  <div class="game-card-details-list">
+                    <div class="game-title-rating">
+                      <h2 class="game-title"><%= wishlist.game.title %></h2>
+                      <h2 class="game-rating-list"><%= wishlist.game.aggregated_rating ? (wishlist.game.aggregated_rating.to_f / 10).round(1) : "N/A" %></h2>
+                    </div>
+                    <div class="game-title-genre">
+                      <p><strong>Rating:</strong> <%= wishlist.game.aggregated_rating&.to_i || "N/A" %></p>
+                      <p><strong>Genre:</strong> <%= wishlist.game.genre || "Unknown Genre" %></p>
+                      <p><strong>Description:</strong> <%= wishlist.game.description&.truncate(150) || "No description available." %></p>
+                    </div>
+                  </div>
+                  <div class="game-card-rating-list">
+                    <%# <p>Game Rating Here</p> %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <div class="no-games">
+              <h2>No Games Found</h2>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-
   <!-- Reviews Tab -->
-  <div class="tab-pane fade <%= params[:anchor] == 'reviews' ? 'show active' : '' %>"
-       id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-    <div class="reviews-container">
-      <% if @reviews.any? %>
-        <% @reviews.each do |review| %>
-          <div class="review-user-page" id="review-<%= review.id %>">
-            <h3>
-              <% if review.user.present? %>
-                <span class="review-user"><%= link_to review.user.username, user_path(review.user) %></span>
-              <% else %>
-                <span class="review-user">Anonymous</span>
-              <% end %>
+  <div class="tab-pane fade" id="reviews" aria-labelledby="reviews-tab">
+   <div class="reviews-container">
+    <% @reviews.each do |review| %>
+      <div class="review-user-page" id="review-<%= review.id %>">
+        <h3>
+          <% if review.user.present? %>
+            <span class="review-user"><%= link_to review.user.username, user_path(review.user) %></span>
+            <% else %>
+              <span class="review-user">Anonymous</span>
+          <% end %>
 
-              <% if review.created_at.present? %>
-                <span class="timestamp">[<%= review.created_at.strftime("%B %d, %Y") %>]</span>
-              <% else %>
-                <span class="timestamp">[Unknown Date]</span>
-              <% end %>
-            </h3>
-            <p class="review-content"><%= review.review %></p>
-          </div>
-        <% end %>
-      <% else %>
-        <div class="no-reviews">
-          <h2>No Reviews Found</h2>
-        </div>
-      <% end %> <!-- Missing end was added here -->
+          <% if review.created_at.present? %>
+            <span class="timestamp">[<%= review.created_at.strftime("%B %d, %Y") %>]</span>
+            <% else %>
+              <span class="timestamp">[Unknown Date]</span>
+          <% end %>
+        </h3>
+        <p class="review-content"><%= review.review %></p>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>
