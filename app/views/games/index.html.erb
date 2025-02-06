@@ -50,10 +50,16 @@
           <div class="game-card-list">
             <img src="<%= game.product_image || 'default_image_path.jpg' %>" alt="<%= game.title %> image" />
             <div class="game-card-details-list">
-              <h2 class="game-title"><%= game.title %></h2>
-              <p><strong>Rating:</strong> <%= game.aggregated_rating&.to_i || "N/A" %></p>
-              <p><strong>Genre:</strong> <%= game.genre || "Unknown Genre" %></p>
-              <p><strong>Description:</strong> <%= game.description&.truncate(150) || "No description available." %></p>
+              <div class="game-title-rating">
+                <h2 class="game-title"><%= game.title %></h2>
+                <h2 class="game-rating-list"><%= game.aggregated_rating ? (game.aggregated_rating.to_f / 10).round(1) : "N/A" %></h2>
+              </div>
+
+              <div class="game-title-genre">
+                <p><strong>Rating:</strong> <%= game.aggregated_rating&.to_i || "N/A" %></p>
+                <p><strong>Genre:</strong> <%= game.genre || "Unknown Genre" %></p>
+                <p><strong>Description:</strong> <%= game.description&.truncate(150) || "No description available." %></p>
+              </div>
             </div>
           </div>
         <% end %>

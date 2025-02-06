@@ -18,10 +18,10 @@
       <div class="profile-info">
         <h1 class="username"><%= "@#{@user.username}" %></h1>
         <br>
-      <h2><span class="light-text">Games in collection  </span> <%= @mygames.count %></h2>
-      <h2><span class="light-text">Wishlist  </span> <%= @wishlists.count %></h2>
-      <h2><span class="light-text">Total reviews  </span> <%= @reviews.count || "No reviews yet" %></h2>
-      <h2><span class="light-text">Top genre  </span> <%= @top_genre || "No genres found" %></h2>
+        <h2><span class="light-text">Games in collection  </span> <%= @mygames.count %></h2>
+        <h2><span class="light-text">Wishlist  </span> <%= @wishlists.count %></h2>
+        <h2><span class="light-text">Total reviews  </span> <%= @reviews.count || "No reviews yet" %></h2>
+        <h2><span class="light-text">Top genre  </span> <%= @top_genre || "No genres found" %></h2>
       </div>
       <div class="console-logos">
         <h2><span class="light-text">Consoles </span><h2>
@@ -101,10 +101,15 @@
                 <div class="game-card-list">
                   <%= image_tag my_game.game.product_image %>
                   <div class="game-card-details-list">
-                    <h2><%= my_game.game.title %></h2>
-                    <h3><%= my_game.game.genre %></h3>
-                    <br>
-                    <p><%= my_game.game.description&.truncate(150) || "No description available." %></p>
+                    <div class="game-title-rating">
+                      <h2 class="game-title"><%= my_game.game.title %></h2>
+                      <h2 class="game-rating-list"><%= my_game.game.aggregated_rating ? (my_game.game.aggregated_rating.to_f / 10).round(1) : "N/A" %></h2>
+                    </div>
+                    <div class="game-title-genre">
+                      <p><strong>Rating:</strong> <%= my_game.game.aggregated_rating&.to_i || "N/A" %></p>
+                      <p><strong>Genre:</strong> <%= my_game.game.genre || "Unknown Genre" %></p>
+                      <p><strong>Description:</strong> <%= my_game.game.description&.truncate(150) || "No description available." %></p>
+                    </div>
                   </div>
                   <div class="game-card-rating-list">
                     <%# <p>Game Rating Here</p> %>
@@ -171,10 +176,15 @@
                 <div class="game-card-list">
                   <%= image_tag wishlist.game.product_image %>
                   <div class="game-card-details-list">
-                    <h2><%= wishlist.game.title %></h2>
-                    <h3><%= wishlist.game.genre %></h3>
-                    <br>
-                    <p><%= wishlist.game.description&.truncate(150) || "No description available." %></p>
+                    <div class="game-title-rating">
+                      <h2 class="game-title"><%= wishlist.game.title %></h2>
+                      <h2 class="game-rating-list"><%= wishlist.game.aggregated_rating ? (wishlist.game.aggregated_rating.to_f / 10).round(1) : "N/A" %></h2>
+                    </div>
+                    <div class="game-title-genre">
+                      <p><strong>Rating:</strong> <%= wishlist.game.aggregated_rating&.to_i || "N/A" %></p>
+                      <p><strong>Genre:</strong> <%= wishlist.game.genre || "Unknown Genre" %></p>
+                      <p><strong>Description:</strong> <%= wishlist.game.description&.truncate(150) || "No description available." %></p>
+                    </div>
                   </div>
                   <div class="game-card-rating-list">
                     <%# <p>Game Rating Here</p> %>
