@@ -152,7 +152,7 @@
                     <h2><%= wishlist.game.title %></h2>
                     <h3><%= wishlist.game.genre %></h3>
                     <br>
-                    <p><%= wishlist.game.description %></p>
+                    <p><%= wishlist.game.description&.truncate(150) %></p>
                   </div>
                   <div class="game-card-rating">
                     <%# <p>Game Rating Here</p> %>
